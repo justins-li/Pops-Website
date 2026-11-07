@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Harvard Pops Orchestra: Concerts</title>
+<meta name="description" content="Upcoming and past concerts of the Harvard Pops Orchestra.">
+<link rel="icon" href="../assets/img/logo/logo-inverted.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Karla:ital,wght@0,400;0,700;1,400&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="../assets/css/site.css" rel="stylesheet">
+<style>
+  body { font-family: 'Karla', sans-serif; color: #161313; background: #ffffff; }
+  h1,h2,h3,h4,.font-display { font-family: 'Oswald', sans-serif; }
+  .text-link { color: #8d2424; text-decoration: underline; text-underline-offset: 3px; }
+  .text-link:hover { color: #5e1717; }
+  .nav-drop { position: relative; }
+  .nav-drop > .drop-panel { visibility: hidden; opacity: 0; transform: translateY(8px); transition: all .18s ease; }
+  .nav-drop:hover > .drop-panel, .nav-drop:focus-within > .drop-panel { visibility: visible; opacity: 1; transform: translateY(0); }
+  .hero-video-wrap { position: absolute; inset: 0; overflow: hidden; }
+  .hero-video-wrap iframe {
+    position: absolute; top: 50%; left: 50%;
+    width: max(100vw, 177.78vh); height: max(100vh, 56.25vw);
+    transform: translate(-50%, -50%); pointer-events: none; border: 0;
+  }
+  ::selection { background: #8d2424; color: #fff; }
+</style>
+</head>
+<body>
+<a href="../index.html" title="Back to the two experiences"
+   class="fixed top-2 left-1/2 -translate-x-1/2 z-[90] text-[11px] uppercase tracking-widest px-3 py-1 rounded-full
+          bg-black/20 text-white/70 backdrop-blur-sm border border-white/20
+          opacity-40 hover:opacity-100 transition-opacity duration-300">&#8646; experiences</a>
+
+<header class="sticky top-0 z-[80] bg-white/95 backdrop-blur border-b border-neutral-200">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="../assets/img/logo/logo-inverted.png" alt="The Harvard Pops Orchestra" class="h-9 invert">
+    </a>
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Main">
+      <a href="index.html" class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink">Home</a>
+      <div class="nav-drop">
+        <button class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink flex items-center gap-1" aria-haspopup="true">Who We Are <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="drop-panel absolute left-0 top-full pt-1 w-56">
+          <div class="bg-white border border-neutral-200 shadow-xl rounded-md py-2">
+            <a href="about.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Our Story</a>
+            <a href="board.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Board</a>
+            <a href="members.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Members</a>
+            <a href="conductor.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Our Music Director</a>
+          </div>
+        </div>
+      </div>
+      <a href="concerts.html" class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-crimson">Concerts</a>
+      <div class="nav-drop">
+        <button class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink flex items-center gap-1" aria-haspopup="true">Get Involved <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="drop-panel absolute left-0 top-full pt-1 w-56">
+          <div class="bg-white border border-neutral-200 shadow-xl rounded-md py-2">
+            <a href="auditions.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Auditions</a>
+            <a href="policies.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Member Policies</a>
+            <a href="donate.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Donate</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <button class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink flex items-center gap-1" aria-haspopup="true">Media <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="drop-panel absolute left-0 top-full pt-1 w-56">
+          <div class="bg-white border border-neutral-200 shadow-xl rounded-md py-2">
+            <a href="pandemic-projects.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Pandemic Projects</a>
+            <a href="photos.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Photos</a>
+            <a href="https://www.youtube.com/@harvardpops4523" target="_blank" rel="noopener" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Concert Videos &#8599;</a>
+          </div>
+        </div>
+      </div>
+      <a href="http://popsalumni.sigs.harvard.edu/" target="_blank" rel="noopener" class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink">Alumni</a>
+      <a href="contact.html" class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink">Contact</a>
+      <button onclick="searchModal.showModal()" class="ml-2 p-2 text-ink hover:text-crimson" aria-label="Search">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/></svg>
+      </button>
+    </nav>
+    <div class="lg:hidden flex items-center gap-1">
+      <button onclick="searchModal.showModal()" class="p-2" aria-label="Search">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/></svg>
+      </button>
+      <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="p-2" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-neutral-200 bg-white max-h-[75vh] overflow-y-auto">
+    <div class="px-4 py-3 space-y-1 text-sm">
+      <a href="index.html" class="block py-2 font-display uppercase tracking-wider">Home</a>
+      <p class="pt-2 text-xs uppercase tracking-widest text-neutral-400">Who We Are</p>
+      <a href="about.html" class="block py-1.5 pl-3">Our Story</a>
+      <a href="board.html" class="block py-1.5 pl-3">Board</a>
+      <a href="members.html" class="block py-1.5 pl-3">Members</a>
+      <a href="conductor.html" class="block py-1.5 pl-3">Our Music Director</a>
+      <a href="concerts.html" class="block py-2 font-display uppercase tracking-wider">Concerts</a>
+      <p class="pt-2 text-xs uppercase tracking-widest text-neutral-400">Get Involved</p>
+      <a href="auditions.html" class="block py-1.5 pl-3">Auditions</a>
+      <a href="policies.html" class="block py-1.5 pl-3">Member Policies</a>
+      <a href="donate.html" class="block py-1.5 pl-3">Donate</a>
+      <p class="pt-2 text-xs uppercase tracking-widest text-neutral-400">Media</p>
+      <a href="pandemic-projects.html" class="block py-1.5 pl-3">Pandemic Projects</a>
+      <a href="photos.html" class="block py-1.5 pl-3">Photos</a>
+      <a href="https://www.youtube.com/@harvardpops4523" target="_blank" rel="noopener" class="block py-1.5 pl-3">Concert Videos &#8599;</a>
+      <a href="http://popsalumni.sigs.harvard.edu/" target="_blank" rel="noopener" class="block py-2 font-display uppercase tracking-wider">Alumni</a>
+      <a href="contact.html" class="block py-2 font-display uppercase tracking-wider">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="bg-ink text-white">
+  <div class="max-w-7xl mx-auto px-4 py-16 grid lg:grid-cols-2 gap-10 items-center">
+    <img src="../assets/img/posters/current-quadfather.jpg" alt="Poster: Pops meets its Quadfather" class="w-full max-w-md mx-auto shadow-2xl">
+    <div>
+      <p class="font-display uppercase tracking-[0.3em] text-red-300 text-sm mb-3">Concerts &mdash; Up Next</p>
+      <h1 class="font-display uppercase text-3xl md:text-5xl tracking-wide mb-4">Pops meets its Quadfather</h1>
+      <p class="font-display uppercase tracking-wider text-neutral-300 mb-1">Saturday, October 24th at 8-10pm</p>
+      <p class="font-display uppercase tracking-wider text-neutral-300 mb-6">Lowell Lecture Hall</p>
+      <p class="leading-relaxed text-neutral-200 mb-8">Extra, extra! Read all about it! The Quab Theatre presents the most famous ballet of the 20th Century (Fanfare), featuring the gorgeous, glamorous, Incredible(s) prima ballerina Desmerelda as the Black Swan (Swan Lake). But beneath Desmerelda’s alluring demeanor lies a terrible secret: just How Bad She Can Be (The Lorax), as the only daughter of The Quad(God)father. Meanwhile, lowly stagehand Robbin’ (Hood) is feeling (Rhapsody in) Blue as she watches from the shadows, dreaming that One Day (Pirates of the Carribbean) it will be her turn to dance Out There (Hunchback of Notre Dame) in the limelight. Will Robbin’ find a way to take center stage? Who can (William) Tell? Find out in Pops Meets Its Quadfather!</p>
+      <a href="https://boxoffice.harvard.edu/Online/default.asp?BOparam::WScontent::loadArticle::permalink=harvard-pops-orchestra" target="_blank" rel="noopener" class="btn bg-crimson hover:bg-crimsondark text-white border-0 rounded-none font-display uppercase tracking-wider">Purchase tickets here</a>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-4"><h1 class="text-4xl md:text-5xl font-display uppercase tracking-wide text-ink mt-14 mb-2">Past Concert Posters</h1><div class="w-16 h-1 bg-crimson mb-8"></div><p class="text-neutral-500 mb-8">See below for past concert descriptions.</p></div>
+<section class="max-w-6xl mx-auto px-4">
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    <button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/01-screenshot-2026-09-30-at-3-54-38-pm.jpg')">
+      <img src="../assets/img/posters/01-screenshot-2026-09-30-at-3-54-38-pm.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/02-img-0273.jpg')">
+      <img src="../assets/img/posters/02-img-0273.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/03-cf1e72b2-261c-4cff-8b86-fcf55a8af3b3.jpg')">
+      <img src="../assets/img/posters/03-cf1e72b2-261c-4cff-8b86-fcf55a8af3b3.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/04-img-1107.jpg')">
+      <img src="../assets/img/posters/04-img-1107.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/05-star-crossed-pops-1-orig.jpg')">
+      <img src="../assets/img/posters/05-star-crossed-pops-1-orig.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/06-the-harvard-pops-orchestra-presents-3-orig.jpg')">
+      <img src="../assets/img/posters/06-the-harvard-pops-orchestra-presents-3-orig.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/07-lollipops.jpg')">
+      <img src="../assets/img/posters/07-lollipops.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/08-spring-2024-orig.jpg')">
+      <img src="../assets/img/posters/08-spring-2024-orig.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/09-winter-2023.jpg')">
+      <img src="../assets/img/posters/09-winter-2023.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/10-pops-the-royal-succession-2.jpg')">
+      <img src="../assets/img/posters/10-pops-the-royal-succession-2.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/11-img-3191.jpg')">
+      <img src="../assets/img/posters/11-img-3191.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/12-jollypops22-orig.jpg')">
+      <img src="../assets/img/posters/12-jollypops22-orig.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/13-pops80soraq-orig.jpg')">
+      <img src="../assets/img/posters/13-pops80soraq-orig.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/14-pops-spring-2022-v1-1.jpg')">
+      <img src="../assets/img/posters/14-pops-spring-2022-v1-1.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/15-popscast-live-concert-poster-sleigh-ride-01.jpg')">
+      <img src="../assets/img/posters/15-popscast-live-concert-poster-sleigh-ride-01.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/16-popsposterfall2021-1.jpg')">
+      <img src="../assets/img/posters/16-popsposterfall2021-1.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/17-pops-orig.jpg')">
+      <img src="../assets/img/posters/17-pops-orig.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/18-spaces-out_2.jpg')">
+      <img src="../assets/img/posters/18-spaces-out_2.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/19-out-of-orbit_2.jpg')">
+      <img src="../assets/img/posters/19-out-of-orbit_2.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/20-jolly-pops-poster-2017_1.jpg')">
+      <img src="../assets/img/posters/20-jolly-pops-poster-2017_1.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/21-pops-wildthings-nov2017_1.jpg')">
+      <img src="../assets/img/posters/21-pops-wildthings-nov2017_1.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/22-mission-impopsible.jpg')">
+      <img src="../assets/img/posters/22-mission-impopsible.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/23-pops20-1.jpg')">
+      <img src="../assets/img/posters/23-pops20-1.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/24-pops-j-1.jpg')">
+      <img src="../assets/img/posters/24-pops-j-1.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/25-pops-omg.jpg')">
+      <img src="../assets/img/posters/25-pops-omg.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/26-hunted6.jpg')">
+      <img src="../assets/img/posters/26-hunted6.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/27-jollypopsposter.jpg')">
+      <img src="../assets/img/posters/27-jollypopsposter.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/28-entombedb.jpg')">
+      <img src="../assets/img/posters/28-entombedb.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/29-bluereschedule.jpg')">
+      <img src="../assets/img/posters/29-bluereschedule.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/30-concertposter.jpg')">
+      <img src="../assets/img/posters/30-concertposter.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/31-pops-april-poster-2011-2.jpg')">
+      <img src="../assets/img/posters/31-pops-april-poster-2011-2.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/32-harvard-pops-orchestra-jolly-pops-winter-wizardry.jpg')">
+      <img src="../assets/img/posters/32-harvard-pops-orchestra-jolly-pops-winter-wizardry.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/33-harvard-pops-orchestra-pops-gets-gangster.jpg')">
+      <img src="../assets/img/posters/33-harvard-pops-orchestra-pops-gets-gangster.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/34-31243-393328654236-7304839236-3828383-7318791-n.jpg')">
+      <img src="../assets/img/posters/34-31243-393328654236-7304839236-3828383-7318791-n.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/35-april-pops-poster.jpg')">
+      <img src="../assets/img/posters/35-april-pops-poster.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/36-jolly-pops-3.jpg')">
+      <img src="../assets/img/posters/36-jolly-pops-3.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/37-10320-157110339236-7304839236-2576098-8072665-n.jpg')">
+      <img src="../assets/img/posters/37-10320-157110339236-7304839236-2576098-8072665-n.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/38-3150-73753204236-7304839236-1555183-6238437-n.jpg')">
+      <img src="../assets/img/posters/38-3150-73753204236-7304839236-1555183-6238437-n.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/39-cartoons-v7-3-copy.jpg')">
+      <img src="../assets/img/posters/39-cartoons-v7-3-copy.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+<button class="poster-tile group relative overflow-hidden rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-crimson" onclick="openLightbox('../assets/img/posters/40-n7304839236-891545-8184.jpg')">
+      <img src="../assets/img/posters/40-n7304839236-891545-8184.jpg" alt="Harvard Pops concert poster" class="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+    </button>
+  </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-4"><h1 class="text-4xl md:text-5xl font-display uppercase tracking-wide text-ink mt-14 mb-2">All Past Concerts</h1><div class="w-16 h-1 bg-crimson mb-8"></div></div>
+<section class="max-w-3xl mx-auto px-4">
+  
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;26: Wherefore Art Thou, Pops?</h3>
+    <p class="font-display uppercase tracking-wider text-neutral-500 text-sm mt-1">Saturday, April 25th at 8pm</p><p class="mt-3 leading-relaxed text-neutral-700">Wherefore art thou, Pops? In fair Harvardia, where we lay our scene. Pfomeo is enraptured by Julowett’s Beauty (and the Beast) at the Lowell Ball, but both lovers are (Les) Miserable(s) because of their Toxic parents, Lord Pfontague and Lady Lowellett. Julowett has faith that Someday Her Prince Will Come (Snow White), but Pfomeo wishes he could run away to A Whole New World (Aladdin). When the armies of the great houses begin to (Raider’s) March (Indiana Jones), a Dance of the Knights (Montagues and Capulets) may destroy the kingdom of Harvardia entirely. Who will win this epic Game of Thrones? Find out in Wherefore Art Thou, Pops?</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;26: Pops at the Museum: The 30th Anniversary</h3>
+    <p class="font-display uppercase tracking-wider text-neutral-500 text-sm mt-1">Saturday, February 21st at 8pm</p><p class="mt-3 leading-relaxed text-neutral-700">Celebrate 30 Years of the Harvard Pops Orchestra! It’s Been a Long, Long Time but Alvin and Theodore — once rival violinists in Pops — are finally reunited for BCG’s end-of-the-year corporate party at the Harvard Art Museum. Theodore claims he’s willing to Go the Distance (Hercules) to be successful as a consultant, but he wonders if Alvin found a more [Harry’s] Wondrous World (Harry Potter) as music director of the Pops Orchestra. When Pirates [of the Caribbean] from Beyond the Sea invade the Museum, [Star] War[s] breaks out! Will Theodore have the courage to say ‘I Want You Back’ to Pops? Find out in Pops at the Museum!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;25: Pops Through the Looking Glass</h3>
+    <p class="font-display uppercase tracking-wider text-neutral-500 text-sm mt-1">Saturday, October 25th at 8pm</p><p class="mt-3 leading-relaxed text-neutral-700">Step through the looking glass with the Harvard Pops Orchestra this family weekend! Alex is Spirited Away from his Jurassic (Park)-aged professors at 19th-century Harvard, where he wonders When Will (His) Life Begin, into Wonderland! Alex will learn How to Train His Dragon and become an All Star in this magical world, but with the Queen of Smarts beheading everyone, things are getting a bit (Danse) Macabre! It’s the Golden opportunity for Alex to make Friends (on the Other Side), but first he must find his inner Eye of the Tiger to save the Kingdom (Dance). Will he succeed? Find out in Harvard Pops Through the Looking Glass!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;25: Star-Crossed Pops</h3>
+    <p class="font-display uppercase tracking-wider text-neutral-500 text-sm mt-1">Saturday, April 12th at 8pm</p><p class="mt-3 leading-relaxed text-neutral-700">Join Pops for the 1,636th season of the Cupid’s Comet Dating Show! Journey Across the Stars (Star Wars) as contestants from each of the planets — from Dunsturn to Mathearth — will compete to win the Prince of the Universe’s heart! Come see whether Catnip Evergreen or Peetanya Mallmart will secure the ultimate prize… or discover a new one along the way. Be Prepared (The Lion King) for some Wicked plot twists, as our contestants are Almost There (Princess and the Frog) to uncovering an Interstellar conspiracy. Will our contestants end up being overrun by space Pirates [of the Caribbean], or will they [Oogway] Ascend (Kung Fu Panda) to the throne by marrying the Prince? Find out in Star Crossed Pops!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;24: LolliPOPS: Sweet Dreams</h3>
+    <p class="font-display uppercase tracking-wider text-neutral-500 text-sm mt-1">Saturday, November 16th at 8pm</p><p class="mt-3 leading-relaxed text-neutral-700">What would you do for a taste of your dreams? Seniors Caroline and Matt are resigned to working Nine to Five, until one day they land an internship that seems like it came right out of their Pure Imagination. Matt thinks he finally found his purpose by making profits go Up (Pixar), but Caroline suspects the mysterious factory owner is sweet… Too Sweet (Hozier). Will the students end up (Overture to) Candied, or will they escape this confectionary La La Land with their dreams intact? Find out in LolliPOPS: Sweet Dreams!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;24: PopsGPT: It&#x27;s Alive!</h3>
+    <p class="font-display uppercase tracking-wider text-neutral-500 text-sm mt-1">Saturday, April 13th at 8pm</p><p class="mt-3 leading-relaxed text-neutral-700">Sophie is nearly finished with her philosophy senior thesis––that is, until a “Black Swan” (Lake) event forces her to start over days before the deadline! Sick of Holding Out for a Hero, Sophie takes matters into her own hands and steals her roommate’s experimental Generative AI program, known as “The Organically-Learning Knowledge-Engine Neural-Net,” or TOLKENN (of Lord of the Rings fame) for short. However, when Sophie’s philosophical spark brings TOLKENN to life and the first thing it says is “You’re Welcome!”, she realizes she’s in a bit more trouble than she bargained for. Will this AI revolution lead to riches on the coast of the West (Side Story), or will someone end up a digitized Bride of Frankenstein? Find out in PopsGPT: It’s Alive!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;23: Pops Steps Down: A Royal Succession</h3>
+    <p class="font-display uppercase tracking-wider text-neutral-500 text-sm mt-1">Friday, November 3rd at 8pm</p><p class="mt-3 leading-relaxed text-neutral-700">The Kingdom of Economica is ruled by its wise king, David Laibson––until his mysterious murder sets off a game of Succession between his two children, and a race to catch the killer! Prince Kenneth, the heir apparent, is more prone to Reflection than ruling and wants to tell the world that “I’m Just Ken”. Princess Charlotte, his underestimated sister, is Spellbound by the chance to become queen and is in Love (is An Open Door) with Hansel, a prince from the neighboring kingdom of Yale-conomica. Will they be tricked by the Devil (Went Down to Georgia), or will they unmask the killer and say “I Knew You Were Trouble”? Find out in Pops Steps Down: A Royal Succession!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;23: Double-o-Pops: License to Thrill</h3>
+    <p class="font-display uppercase tracking-wider text-neutral-500 text-sm mt-1">Saturday, April 15th at 8pm</p><p class="mt-3 leading-relaxed text-neutral-700">James Bond always likes his drinks shaken, not stirred––until a corporate shake-up at MI6 lands him out of a job! Meanwhile, Harvard freshman and biology whizz Stella is on top of the world and shouting: “Don’t Stop Me Now!” to anyone who will listen. But after she faces her first rejection and drowns her sorrows at a wild Bacchanale, her friend Ivy brings terrible news: their LS1B professor, Andrew Berry, has been mysteriously kidnapped, and Stella is the primary suspect! To clear Stella’s name, they team up with a newly-unemployed James Bond, who whisks them halfway across the world to a Sleeping Beauty Waltz in Vienna and then to Istanbul (Not Constantinople). Will they be able to rescue Professor Berry? Or will double-crossing double-agents instead Paint It Black and make this Mission Impossible? Mamma Mia, who can you trust?? Find out in Double-O Pops: License to Thrill!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;22: Pops Back to the 80s</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">When experimentation with the futuristic time machine Lex (Daugherty) goes wrong, two acquaintances must team up to save an 18th-century Marriage (of Figaro) (Mozart) and prevent a friend lost in time from becoming a Phantom (of the Opera) (Webber). Join their Adventures on Earth (Williams) as they meet new friends like My Neighbor Totoro (Hisaishi), learn to give up the comforts of the 21st century and not be a Material Girl (Madonna), and find that they can Take On (Me) (A-ha) a lot more than they thought. It’s not all a (Carmen) Fantasy (Sarasate), though: they’ll encounter situations that make them feel as though they’re doing a Dance of the Buffoons (Rimsky-Korsakov), a broken time machine, and much more. If they Don’t Stop Believin’ (Journey), will they be able to find their friend and return to the modern day? Find out in POPS BACK TO THE 80s!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;22: Pops and the Island of Misfit Professors!</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Three professors are on a mission to make a “wicked awesome discovery” to achieve tenure. They’ll embark on a Raider’s March (Williams) and wonder How Far I’ll Go (Miranda) in a lengthy quest that will nearly take them to Mars (Holst). Join them as they encounter a Carnival of the Animals (Saint-Saens), a Bridge Over Troubled Water (Simon &amp; Garfunkel), and a magical Jurassic Park (Williams). Will they be successful, or will they become Les Misérables (Schönberg) and beg Take Me Home, Country Roads (Denver)? Will they continue having to Danzon (Márquez) to achieve tenure? Find out in POPS AND THE ISLAND OF MISFIT PROFESSORS!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;21: Popscast: Live!</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">The Harvard Pops will be performing our pandemic podcast Popscast: Cereal live this Thursday December 2nd from 8pm-9pm. Hear us perform the original five episode podcast production in Smith Campus Center Harvard Commons for free! A violin prodigy and her trumpet playing roommate must find her missing breakfast cereal before her debut performance with The Harvard Pops Orchestra. Tune in live to follow our protagonists on their adventure.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;21: Pops Casts a Spell!</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">In this concert, two recently graduated wizards are on a magical mission after a Wicked (Schwartz) magical pandemic performed a Danse Macabre (Saint-Saëns) on their magic education. These Friends On The Other Side (Newman) must navigate A Whole New World (Menken) to find Howl’s Moving Castle (Hisaishi) and master their magical potential. But, will our heroes find themselves in Double Trouble (Williams) because of a dark wizard&#x27;s evil schemes? Bring your Superstition (Stevie Wonder), get ready to learn How to Train Your Dragon (Powell), and if you’re lucky you might spot the Fiddler On The Roof (Bock, Williams) in POPS CASTS A SPELL!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;19: Under the Sea</h3>
+    
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;17: Pops Finds the Wild Things</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">When a simple hunt for the Sasquatch of Prospect Park (Green &#x27;06) goes awry, wannabe Indiana Jones (Williams) Percy and naturalist Eloise find themselves Spellbound (Rozsa) to a world where Superstition (Wonder arr. Kocharian) comes to life. With the help of Friends on the Other Side (Newman arr. Badillo) can they get Out of the Woods (Swift arr. Rosen), or will they get stuck in a Nightmare Before Christmas (Elfman arr. McKenzie)?</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;17: Mission ImPOPSible: The Hunt for America&#x27;s Next Top Spy</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Join aspiring spies Julius, Mia, and Natasha as they vie for the title of America’s Next Top Spy. Will this prove to be a Mission Impossible (Schifrin, Custer)? Or will the contestants be able to demonstrate that they are a group of Incredibles (Giacchino, Holcombe)? Be Prepared (Rice, John, Hylton, Min) for their far-flung Escapades (Williams), whether to Hawaii, or the river Moldau (Smetana). Regardless of who joins Sherlock (Price, Arnold, Marsh) and 007 (Custer) in the Spy Hall of Fame, it is sure to be a wild ride. But what can we say except &quot;You’re Welcome&quot; (Miranda, Foa&#x27;i, Mancina, Kim)?</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;17: Pops&#x27; Greatest Hits: A 20th Anniversary Celebration</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Our beloved alumni will be singing, acting, conducting, and playing with the orchestra for Pops&#x27; Greatest Hits such as West Side Story (Bernstein) and Star Wars (Williams).</p><p class="mt-3 leading-relaxed text-neutral-700">An ancient map leads Popsies young and old across Harvard&#x27;s campus to find a legendary treasure with the power to ruin or save Pops. Follow us On the Trail (Daniels) as we attempt to save our Poor Unfortunate Souls (Green)! In an adventure not unlike Pirates of the Caribbean (Ricketts), will Popsies be able to find the treasure before the Were-Viola (Daniels, Lim) arrives?</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;16: Oh My Gods: A Divine Drama</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">It’s time to Summon the Heroes (Williams) to Lowell Lecture Hall! The reigning God of Mount Auburn (like the Jupiter [Holst] of Harvard) has reached the end of his term, and it’s up to his children Nike and Titus to take over. Before they have the power to continue the Circle of Life (John), they must first head Up (Giacchino) to Harvard for one year to learn about the students they are about to rule over. But life at Harvard is not as easy as our young gods thought. Will they really be able to ascend the throne, or are their dreams just a Perfect Illusion (Lady Gaga)? Whatever the outcome, this divine drama is sure to entertain- you can Bet On It (High School Musical 2)!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;16: Hunted: A Murderous Musical</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Say Hello (Adele) to the Harvard Pops Orchestra as they attempt to stay alive on a campus plagued by a string of mysterious deaths! Rocky Horror (O&#x27;Brien) awaits as Vivica and Remy try to survive the attacks from alleged murderer Peter. Will they tell each other, &quot;I&#x27;ll Make a Man Out of You (Wilder)&quot; and make it through the turmoil, or will the orchestra need to play a Funeral March for a Marionette (Gounod)? One thing is for sure: this Symphonie Fantastique (Berlioz) is sure to be full of Madness (Marsh &amp; Rosen)!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;15: Entombed: A Pops Pyramid Scheme</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">The hot days of summer may be gone, but the Harvard Pops Orchestra is ready to take you to the scorching deserts of Egypt! Follow Sam and Layla as they take to the deserts to scour a newly discovered pyramid for treasure. As they Walk Like an Egyptian (Sternberg) into the ruins, they awaken a long-dead Prince of Egypt (Schwartz) who has sworn to protect his final resting place. Will they end up rich and happy like Jasmine and Aladdin (Menken), or will they come out a couple of Les Miserables (Schönberg)? One thing is certain: it’s gonna take a lot of Kung Fu Fighting (Carl Douglas) before they’re ready to Run This Town (Jay-Z). Join the Harvard Pops to see what’s in store!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;15: Pops Ahoy! A Nautical Narrative</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Ahoy, mateys! Warmer days are finally upon us, and Harvard students Blair and Wyatt are gearing up for a tropical vacation during Spring Break. Unfortunately for them, Pyrite Isle is about to be overrun with a vengeful group of Pirates of the Caribbean (Zimmer)! Will they enjoy themselves by Livin&#x27; la Vida Loca and dancing The Tango Ivy League (Badillo), or will these two Poor Unfortunate Souls (Menken) experience a disaster of Titanic (Horner) proportions? Join the Harvard Pops Orchestra to find out!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;14: Spellbound: A Fractured Fairytale</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Alack! The Wicked (Schwartz) sorceress Eleanora Thistle has cast a dangerous spell on the kingdom of Harmonia and it’s going to take The Harvard Pops Orchestra all of the courage in A Fifth of Beethoven (Murphy) to get out of this one.</p><p class="mt-3 leading-relaxed text-neutral-700">With the Syncopated Clock (Anderson) running out before the curse is permanent, Princess Aria and her betrothed, Daniel “Danny Boy (Grainger)” of the House of Virtuoso must put the wedding planning on hold—deciding whether their first dance will be a Danse Bacchanale (Saint-Saens) or a Sleeping Beauty Waltz (Tchaikovsky) isn’t important at a time like this—and attempt to save the kingdom. Can they Go the Distance (Menken), or will we need a Pavane for a Dead Princess (Ravel) before the night is through? Our valiant duo will throw out a Hallelujah (Cohen) and hope for the best, but one thing is certain: after tonight, things will never be the same.</p><p class="mt-3 leading-relaxed text-neutral-700">Join The Harvard Pops for an evening of more adventure than Star Wars (Williams) and Game of Thrones (Djawadi) combined!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;14: Los Popseadores</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Help! The Harvard Pops Orchestra’s application for credit transfer has been accepted! Follow the adventures of two Harvard students, Maria and Drew, as they travel to the land of Evita (Lloyd Webber): Buenos Aires, Argentina. With their limited knowledge of [Capriccio] Espagnole (Rimsky-Korsakov), the two are thrust into their own West Side Story (Bernstein) of romance, adventure, and jewel smuggling.</p><p class="mt-3 leading-relaxed text-neutral-700">Far from home, Drew believes that the time abroad will be the turning point for his unrequited love for Maria: will he Don’t Stop Believin’ (Cain, Perry, &amp; Schon) or Let it Go (Anderson-Lopez &amp; Lopez)? On the other hand, the newly single Maria is of the opinion that she Won’t Say I’m in Love (Menken) during her time away from the Harvard campus, either to Drew or to anyone else. However, this becomes difficult when she meets the utterly debonair Santiago. His Hips Don’t Lie (Shakira), but could he be hiding a secret--namely, a connection to the notorious jewel smuggling Bling Ring that has been terrorizing the city&#x27;s precious gems?</p><p class="mt-3 leading-relaxed text-neutral-700">Join The Harvard Pops Orchestra and special guest Brad Ellis, the pianist from Glee, for an exciting exploration of the events that unfold when Harvard students actually leave the Harvard Bubble (gasp!), an act that requires the bravery of Los Toreadors (Bizet).</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;13: Pops Gets a Clue</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">HELP! There has been a homicide on the campus of Cambridge University, here in Harvard of the UK. Luckily, three ambitious young Wannabe (Spice Girls) detectives all spring into action.</p><p class="mt-3 leading-relaxed text-neutral-700">Things quickly become increasingly suspicious, as a Mystery Medley (Golden) of evidence surmounts. Despite each of our protagonists&#x27; seemingly hard efforts, sleuthing like a Pink Panther (Mancini), it becomes increasingly clear that the murderer must be amongst them. Will the innocent ones pull through like the Men in Black (Mancini), or will the killer amongst them take out the others, in just One, Two, Theramazoo (Goldin)?</p><p class="mt-3 leading-relaxed text-neutral-700">Prepare to be absolutely Spellbound (Rozsa) by the music, acting, and original storyline at the Pops concert where we will crack the mystery, British Sherlock style.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;13: Pops Avenges</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">HELP! All of our favorite superheroes have been disappearing! Are they all on vacation, or is there something more sinister in motion? The only clue to this unsettling predicament is the very strange behavior of our favorite pops-playing orchestra.</p><p class="mt-3 leading-relaxed text-neutral-700">Despite an effort worth A Thousand Miles (Carlton), Vanessa, our incorruptible heroine, is rejected from her dream internship. Luckily, she finds an invaluable (and sassy) mentor who helps her channel her inner Superman (Timberg). With her newfound training, she gets off to a Rocky (Conti) start. However, when she discovers that the perpLEXing (Daugherty) forces of evil have taken the Highway to Hell (AC/DC) of betrayal against her, she is forced to finally stand up for herself, and for the world. Can Vanessa complete this Mission Impossible (Schifrin) and come up with the strength to Summon the Heroes (Williams) back from evil? Or will the villains indeed let the Skyfall (Adele), by converting the last talented superheros of the world to evil on a Night on Bald Mountain (Mussorgsky)?</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Winter &#x27;12: JollyPOPS: Pops Goes the Distance</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Hark! (Mendelssohn) What do we do when Santa has a midlife crisis and moves to the Bahamas? Join our two brave, young protagonists as they put their hopes of White Christmas (Berlin) on the back burner and visit a diverse set of locations around the world to deliver presents on their own. They have no problem with the occasional Polar Express (Silvestri) ride and of course, your classic Sleigh Ride (Anderson), but things get sticky when a reckless crew of Pirates of the Caribbean (Badelt) try to disrupt the adventure! A story of perseverance and faith in the Christmas spirit, this concert will show what it truly means to Go the Distance (Menken). Perfect for the young and the young at heart. Stick around at the end for a meet and greet with the players at the Instrument Petting Zoo.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;12: Wanted: A Western-Style Fall Concert</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">The Harvard Pops Orchestra is packing its bags, getting out of the land of brick and clam chowder, and trekking to a completely New World (Symphony) (Dvorak)--the Wild West. In a manner reminiscent of the backroads of Oklahoma (Rodgers), conflict breaks out almost immediately as our young protagonists, Bill and Annie, take the stage.</p><p class="mt-3 leading-relaxed text-neutral-700">Annie, a wanted &quot;criminal,&quot; has new challenges to face in this land. Annie, Get Your Gun (Berlin), because you never know what&#x27;s in store in this strange place. Will she join Jesse&#x27;s Band of Thieves (Feinstein), another wanted bunch dangerous, misunderstood, Westerners operating Somewhere Out There (Horner)? Meanwhile can Bill overcome his regret, solitude, and disillusionment, Bohemian Rhapsody (Queen) style, and discover how he can truly be happy?</p><p class="mt-3 leading-relaxed text-neutral-700">Past E.T. Adventures on Earth (Williams) in the original American West turned out to be pretty great, as you may know from Indiana Jones: Raiders March (Williams) but only at this concert will you be able to judge if it lives up to all the hype! You are Wanted, dead or alive (preferably alive), and before we bid you a final Ashokan Farewell (Ungar), we will have presented you an original script, along with the above numbers, plus many more!</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;12: APOPSCALYPSE</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">It is finally here--the year to end it all! And what better way to spend it than joining our brave heroes in a time-traveling adventure into the past? After an initial Overture to Candide (Bernstein), you may just find yourself swept into a different millennium, far before 2012, but close to a shocking apocalypse of its own.</p><p class="mt-3 leading-relaxed text-neutral-700">When our time travelers are quite literally thrown into A Whole New World (Menken), they are joined by a new companion, a young Sorcerer&#x27;s Apprentice (Dukas). Unfortunately, things take a turn for the worse when the apprentice&#x27;s master, an evil wizard, discovers and imprisons our heroes--a truly Les Misérables (Schönberg) situation.</p><p class="mt-3 leading-relaxed text-neutral-700">Will our time traveling heroes be able to outsmart the evil wizard and his apocalyptic plans, and eventually make it Back to the Future (Douglas)? Will they be able to successfully complete a quest as epic as that of The Lord of the Rings (Shore) on their own? Or will they need some Fuel (Metallica) to help them? Whether you do or do not buy into the apocalypse hype, be sure to join us for this epic concert. By the end, you won&#x27;t help but declare: &quot;I&#x27;m a Believer (Diamond)!&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;11: Pops Comes of Age</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Pops delves into the drama of middle school featuring guest performer Brad Ellis, pianist from Glee! Major repertoire: &quot;The School For Scandal,&quot; &quot;Wicked,&quot; &quot;Pirates of the Caribbean,&quot; &quot;Fiddler on the Roof,&quot; &quot;Make a Man Out of You,&quot; &quot;Danse Bachanale,&quot; &quot;Don&#x27;t Stop Believin&#x27;.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Winter &#x27;11: JollyPops - Winter Wizardry</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Holiday Kids&#x27; Concert. Major repertoire: &quot;Harry Potter,&quot; &quot;The Polar Express,&quot; &quot;Waltz of the Flowers,&quot; &quot;Sleigh Ride,&quot; &quot;Charlie Brown.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;11: Pops Gets Gangster</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Revisit the era of the Chicago mobster on the run, risking life and limb for the thrill of the chase. Major repertoire: &quot;On the Waterfront,&quot; &quot;The Pink Panther,&quot; &quot;Slaughter on 10th Avenue,&quot; &quot;Catch Me If You Can,&quot; &quot;Cell Block Tango.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;10: The Phantom of the Opera and the Voice of the Violin</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">A screening of the original 1925 film The Phantom of the Opera in Sanders Theater, featuring one of Lon&#x27;s Chaney&#x27;s greatest performances as the Phantom. The Pops accompanied the silent film, as well as D.W. Griffith&#x27;s short film The Voice of the Violin.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;10: Pops Scores!</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Casey&#x27;s at the bat alright! Well Harv, it looks like he&#x27;s ready for an exciting game. Right you are Ken, we&#x27;re in store for something spectacular tonight. Major repertoire: &quot;Casey at the Bat,&quot; &quot;Go the Distance,&quot; &quot;Summon the Heroes,&quot; &quot;Bugler&#x27;s Dream,&quot; &quot;Musical Highlights from Rocky,&quot; &quot;Sabre Dance,&quot; &quot;Les Toreadors.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Winter &#x27;09: JollyPops</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Holiday Kids&#x27; Concert. Major repertoire: &quot;Sleigh Ride,&quot; music from &quot;Aladdin,&quot; dance from &quot;The Nutcracker,&quot; &quot;I Love Trash&quot; with Oscar the Grouch, &quot;You&#x27;re a Mean One Mister Grinch,&quot; with holiday sing-a-long and instrument petting zoo.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;09: Pops Phones Home</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Pops has an otherworldly adventure. Major repertoire: &quot;Themes from E.T. the Extraterrestrial&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;09: Pops Sells Its Soul</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Sin never sounded so good.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Winter &#x27;09: Cartoons</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">What&#x27;s up Doc? Major repertoire: &quot;Themes from Spiderman&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;08: Pops Risks it All</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Not your typical game of risk.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;08: Pops Gets Enchanted</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Pops&#x27; take on classic fairy tales. Major repertoire: Stravinsky - &quot;Firebired Suite,&quot; Tchaikovsky - &quot;Sleeping Beauty,&quot; Dukas - &quot;Ther Sorcerer&#x27;s Apprentice,&quot; and Feinstein - &quot;The Red Shoes.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Winter &#x27;08: Pops Gone Wild</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">The animal concert. Major repertoire: Saint-Saens - &quot;Carnival of the Animals,&quot; Strauss - &quot;Die Fledermaus,&quot; and John Williams - &quot;Raiders of the Lost Ark.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;07: Pops Jumps the Shark</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">An underwater adventure. Major repertoire: Bernstein - &quot;Symphonic Dances from West Side Story,&quot; Badelt - &quot;Pirates of the Caribbean,&quot; and our own Allen Feinstein&#x27;s concerto for euphonium, featuring special guest Adam Frey.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;07: Pops Goes Back to the Future</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Our 10th Anniversay spectacular in Sanders Theater! Major repertoire: John Williams - music from &quot;Back to the Future&quot; and &quot;Star Wars,&quot; Gershwin - &quot;Rhapsody in Blue,&quot; Green - &quot;Concerto for Time-Travelling Orchestra,&quot; and Brubeck - &quot;Interplay,&quot; a concerto for classical violin, jazz violin, and fiddle.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Winter &#x27;07: Pops Rides the Waves</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">A Pops double feature. Major repertoire: accompaniment to the classic silent film &quot;The Mark of Zorro&quot; and an original radio play, by Liz Weinbloom &#x27;07 and Ben Green &#x27;06.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;06: Pops Gets Cursed</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">Or, Curse of the Were-viola. Major repertoire: John Williams - music from &quot;Harry Potter&quot; and &quot;Jurassic Park,&quot; Schwartz - &quot;Highlights from Wicked,&quot; Saint-Saens - &quot;Danse Macabre,&quot; and Berlioz - &quot;Witches&#x27; Sabbath.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;06: Pops Strikes it Rich</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">A celebration of our shiny new endowment.. Major repertoire: Mussorgsky - &quot;Night on Bald Mountain,&quot; John Williams - &quot;E.T.&quot; and &quot;Scherzo for Motorcycle and Orchestra,&quot; Grieg - &quot;Peer Gynt.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Winter &#x27;06: Pops Goes West</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">The cowboy concert. Major repertoire: Copland - &quot;Rodeo,&quot; Williams - &quot;Cowboys Overture,&quot; Grofe - &quot;On The Trail.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;05: Pops Hunts For Treasure</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">The pirate concert. Major repertoire: Rimsky-Korsakov - &quot;Scheherezade,&quot; Smetana - &quot;Moldau,&quot; Badelt - &quot;Pirates of the Caribbean.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;05: Murder, We Note</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">A staged musical murder mystery featuring special guests Tom Lowe, Jess Peritz, and a theremin.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Winter &#x27;05: Pops Visits the Moon</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">The story of a lovesick astronaut and her destiny in the stars.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;04: &#x27;Toon Tunes</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">A celebration of music used in and written for cartoons, featuring a live performance of the Bugs Bunny classic &quot;The Rabbit of Seville,&quot; and an original score to a 1924 cartoon, &quot;The Flying House.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Spring &#x27;04: Pops Rocks</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">An evening of rock-related music, from rock and roll hits, to Rachmaninoff, to that big rock in Indiana Jones.</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Winter &#x27;04: Love&#x27;ll Kill Ya</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">An evening of songs by special guest Larry O&#x27;Keefe, composer of the off-Broadway hit, &quot;Bat Boy.&quot;</p>
+  </article>
+  <article class="py-8 border-b border-neutral-200 last:border-0">
+    <h3 class="font-display uppercase tracking-wide text-2xl text-ink">Fall &#x27;03: Pops Goes to the Oscars</h3>
+    <p class="mt-3 leading-relaxed text-neutral-700">A celebration of all things Oscar, from Oscar Hammerstein II and Oskar Schindler to Oscar Meyer Weiners and Oscar-the-Grouch. Oh yeah, and the movie awards thing.</p>
+  </article>
+</section>
+
+<dialog id="lightbox" class="modal">
+  <div class="modal-box max-w-3xl p-0 bg-transparent shadow-none overflow-visible">
+    <img id="lightboxImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Concert poster, enlarged" class="w-full rounded-md shadow-2xl">
+  </div>
+  <form method="dialog" class="modal-backdrop"><button>close</button></form>
+</dialog>
+
+</main>
+
+<footer class="bg-ink text-neutral-300 mt-20">
+  <div class="max-w-7xl mx-auto px-4 py-12 grid gap-8 md:grid-cols-3 items-start">
+    <div>
+      <img src="../assets/img/logo/logo-inverted.png" alt="The Harvard Pops Orchestra" class="h-12 mb-4">
+      <p class="text-sm text-neutral-400">The Harvard Pops Orchestra<br>Copyright &copy; 2026</p>
+    </div>
+    <nav class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm uppercase tracking-wider font-display" aria-label="Footer">
+      <a href="index.html" class="hover:text-white">Home</a>
+      <a href="about.html" class="hover:text-white">About</a>
+      <a href="concerts.html" class="hover:text-white">Concerts</a>
+      <a href="donate.html" class="hover:text-white">Donate</a>
+      <a href="contact.html" class="hover:text-white">Contact</a>
+    </nav>
+    <div class="flex md:justify-end gap-4">
+      <a href="https://www.instagram.com/harvardpopsorchestra/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-white">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.3-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.3-.4 1.2-.1 1.6-.1 4.8-.1zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a5 5 0 110 10 5 5 0 010-10zm0 1.8a3.2 3.2 0 100 6.4 3.2 3.2 0 000-6.4zm5.2-2.9a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/harvard.pops.orchestra" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-white">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@harvardpops4523" target="_blank" rel="noopener" aria-label="YouTube" class="hover:text-white">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.2C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.2c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2A31.3 31.3 0 0024 12a31.3 31.3 0 00-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<dialog id="searchModal" class="modal">
+  <div class="modal-box max-w-xl bg-white">
+    <h3 class="font-display uppercase tracking-wider text-lg mb-3">Search</h3>
+    <input id="searchInput" type="text" placeholder="Search the site&hellip;"
+           class="input input-bordered w-full bg-white" oninput="doSearch(this.value)" autocomplete="off">
+    <ul id="searchResults" class="mt-4 space-y-1"></ul>
+    <div class="modal-action">
+      <form method="dialog"><button class="btn btn-sm">Close</button></form>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop"><button>close</button></form>
+</dialog>
+<script>
+const SEARCH_INDEX = [["Home", "index.html", "You've heard of musical theater. We bring you theatrical music. Harvard Pops Orchestra student-run full symphonic orchestra tickets fall 2026 concert"], ["Our Story", "about.html", "Founded in 1996 by Eric Damast. Full symphonic orchestra conducted by Allen Feinstein. Theatrical music productions, themed concerts, Lowell Lecture Hall, SOCH."], ["Board", "board.html", "Board 2026 co-presidents treasurer operations creative team social chair snack sensei ticket manager publicity librarians alumni stage manager webmaster attendance production program historian student conductor lead arranger"], ["Members", "members.html", "Members violin viola cello contrabass flute piccolo oboe clarinet saxophone french horn trumpet trombone piano percussion concertmaster principal"], ["Our Music Director", "conductor.html", "Allen Feinstein music director since 1998. Conductor composer professor Northeastern University Hasty Pudding Theatricals."], ["Concerts", "concerts.html", "Pops meets its Quadfather. Upcoming and past concerts, posters, descriptions, tickets, Lowell Lecture Hall."], ["Auditions", "auditions.html", "Join us. Welcome class of 2030. Audition sign-ups, solo excerpt, sight-reading, low stress, email list."], ["Member Policies", "policies.html", "The rules. Attendance policy rehearsal Tuesday. Ticket sales five tickets. Postering."], ["Donate", "donate.html", "Donate donation form endowment endowed chairs baked goods cookies support."], ["Pandemic Projects", "pandemic-projects.html", "Popscast: Cereal podcast musical mystery melodrama. Pops gets funky."], ["Photos", "photos.html", "Photos galleries. Pops breaks a leg 2018. Mission Impopsible 2017. 20th Anniversary Alumni Concert. Humanitarian of the year."], ["Contact", "contact.html", "Get in touch. Email harvardpops@gmail.com. Facebook Instagram. Question comment form."]];
+function doSearch(q) {
+  const ul = document.getElementById('searchResults');
+  ul.innerHTML = '';
+  q = q.trim().toLowerCase();
+  if (!q) return;
+  SEARCH_INDEX.filter(([t, u, body]) =>
+    (t + ' ' + body).toLowerCase().includes(q)
+  ).forEach(([t, u]) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = u; a.textContent = t;
+    a.className = 'block px-3 py-2 rounded hover:bg-neutral-100 text-crimson font-display uppercase tracking-wide text-sm';
+    li.appendChild(a); ul.appendChild(li);
+  });
+  if (!ul.children.length) ul.innerHTML = '<li class="px-3 py-2 text-sm text-neutral-400">No results.</li>';
+}
+</script>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').showModal();
+}
+</script>
+
+</body>
+</html>

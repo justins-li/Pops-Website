@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Harvard Pops Orchestra: Board</title>
+<meta name="description" content="The board of the Harvard Pops Orchestra">
+<link rel="icon" href="../assets/img/logo/logo-inverted.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Karla:ital,wght@0,400;0,700;1,400&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="../assets/css/site.css" rel="stylesheet">
+<style>
+  body { font-family: 'Karla', sans-serif; color: #161313; background: #ffffff; }
+  h1,h2,h3,h4,.font-display { font-family: 'Oswald', sans-serif; }
+  .text-link { color: #8d2424; text-decoration: underline; text-underline-offset: 3px; }
+  .text-link:hover { color: #5e1717; }
+  .nav-drop { position: relative; }
+  .nav-drop > .drop-panel { visibility: hidden; opacity: 0; transform: translateY(8px); transition: all .18s ease; }
+  .nav-drop:hover > .drop-panel, .nav-drop:focus-within > .drop-panel { visibility: visible; opacity: 1; transform: translateY(0); }
+  .hero-video-wrap { position: absolute; inset: 0; overflow: hidden; }
+  .hero-video-wrap iframe {
+    position: absolute; top: 50%; left: 50%;
+    width: max(100vw, 177.78vh); height: max(100vh, 56.25vw);
+    transform: translate(-50%, -50%); pointer-events: none; border: 0;
+  }
+  ::selection { background: #8d2424; color: #fff; }
+</style>
+</head>
+<body>
+<a href="../index.html" title="Back to the two experiences"
+   class="fixed top-2 left-1/2 -translate-x-1/2 z-[90] text-[11px] uppercase tracking-widest px-3 py-1 rounded-full
+          bg-black/20 text-white/70 backdrop-blur-sm border border-white/20
+          opacity-40 hover:opacity-100 transition-opacity duration-300">&#8646; experiences</a>
+
+<header class="sticky top-0 z-[80] bg-white/95 backdrop-blur border-b border-neutral-200">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="../assets/img/logo/logo-inverted.png" alt="The Harvard Pops Orchestra" class="h-9 invert">
+    </a>
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Main">
+      <a href="index.html" class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink">Home</a>
+      <div class="nav-drop">
+        <button class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-crimson flex items-center gap-1" aria-haspopup="true">Who We Are <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="drop-panel absolute left-0 top-full pt-1 w-56">
+          <div class="bg-white border border-neutral-200 shadow-xl rounded-md py-2">
+            <a href="about.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Our Story</a>
+            <a href="board.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Board</a>
+            <a href="members.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Members</a>
+            <a href="conductor.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Our Music Director</a>
+          </div>
+        </div>
+      </div>
+      <a href="concerts.html" class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink">Concerts</a>
+      <div class="nav-drop">
+        <button class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink flex items-center gap-1" aria-haspopup="true">Get Involved <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="drop-panel absolute left-0 top-full pt-1 w-56">
+          <div class="bg-white border border-neutral-200 shadow-xl rounded-md py-2">
+            <a href="auditions.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Auditions</a>
+            <a href="policies.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Member Policies</a>
+            <a href="donate.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Donate</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <button class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink flex items-center gap-1" aria-haspopup="true">Media <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="drop-panel absolute left-0 top-full pt-1 w-56">
+          <div class="bg-white border border-neutral-200 shadow-xl rounded-md py-2">
+            <a href="pandemic-projects.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Pandemic Projects</a>
+            <a href="photos.html" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Photos</a>
+            <a href="https://www.youtube.com/@harvardpops4523" target="_blank" rel="noopener" class="block px-4 py-2 text-sm hover:bg-neutral-50 hover:text-crimson">Concert Videos &#8599;</a>
+          </div>
+        </div>
+      </div>
+      <a href="http://popsalumni.sigs.harvard.edu/" target="_blank" rel="noopener" class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink">Alumni</a>
+      <a href="contact.html" class="px-3 py-2 uppercase tracking-wider text-sm font-display font-medium hover:text-crimson transition-colors text-ink">Contact</a>
+      <button onclick="searchModal.showModal()" class="ml-2 p-2 text-ink hover:text-crimson" aria-label="Search">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/></svg>
+      </button>
+    </nav>
+    <div class="lg:hidden flex items-center gap-1">
+      <button onclick="searchModal.showModal()" class="p-2" aria-label="Search">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/></svg>
+      </button>
+      <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="p-2" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-neutral-200 bg-white max-h-[75vh] overflow-y-auto">
+    <div class="px-4 py-3 space-y-1 text-sm">
+      <a href="index.html" class="block py-2 font-display uppercase tracking-wider">Home</a>
+      <p class="pt-2 text-xs uppercase tracking-widest text-neutral-400">Who We Are</p>
+      <a href="about.html" class="block py-1.5 pl-3">Our Story</a>
+      <a href="board.html" class="block py-1.5 pl-3">Board</a>
+      <a href="members.html" class="block py-1.5 pl-3">Members</a>
+      <a href="conductor.html" class="block py-1.5 pl-3">Our Music Director</a>
+      <a href="concerts.html" class="block py-2 font-display uppercase tracking-wider">Concerts</a>
+      <p class="pt-2 text-xs uppercase tracking-widest text-neutral-400">Get Involved</p>
+      <a href="auditions.html" class="block py-1.5 pl-3">Auditions</a>
+      <a href="policies.html" class="block py-1.5 pl-3">Member Policies</a>
+      <a href="donate.html" class="block py-1.5 pl-3">Donate</a>
+      <p class="pt-2 text-xs uppercase tracking-widest text-neutral-400">Media</p>
+      <a href="pandemic-projects.html" class="block py-1.5 pl-3">Pandemic Projects</a>
+      <a href="photos.html" class="block py-1.5 pl-3">Photos</a>
+      <a href="https://www.youtube.com/@harvardpops4523" target="_blank" rel="noopener" class="block py-1.5 pl-3">Concert Videos &#8599;</a>
+      <a href="http://popsalumni.sigs.harvard.edu/" target="_blank" rel="noopener" class="block py-2 font-display uppercase tracking-wider">Alumni</a>
+      <a href="contact.html" class="block py-2 font-display uppercase tracking-wider">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="max-w-4xl mx-auto px-4"><h1 class="text-4xl md:text-5xl font-display uppercase tracking-wide text-ink mt-14 mb-2">Board 2026</h1><div class="w-16 h-1 bg-crimson mb-8"></div></div><div class="max-w-4xl mx-auto px-4">
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Co-Presidents</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/jang-choe.jpg" alt="Jang Choe" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Jang Choe</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Jang is a senior and Pfoho-turned-Leverett resident from Las Vegas, Nevada. He studies HDRB &amp; Economics and plays violin for the Pops. When he&#x27;s not arranging [insert Disney song here], you can find Jang preaching about the importance of scooter safety or trying to find the time to discover new restaurants in Boston.</p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/laura-martens.jpg" alt="Laura Martens" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Laura Martens</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Laura is a senior in Lowell studying German, History &amp; Literature. In Pops shows, she plays devious side characters with terrible European accents (and sometimes the cello). Right now, Laura is probably watching Game of Thrones with her mother and little sister.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Treasurer</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/brian-tollar.jpg" alt="Brian Tollar" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Brian Tollar</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Brian is a sophomore in Lowell wanting to study electrical engineering. When he’s not playing cello in Pops, you can find him in the Crimson Cellos or in a random pit for a musical. When not playing cello, he loves to roam around Boston and find new views.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Operations Director</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/elizabeth-plank.jpg" alt="Elizabeth Plank" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Elizabeth Plank</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Elizabeth is a junior in Leverett studying Human Developmental and Regenerative Biology and Global Health and Health Policy. She is one of five thousand Harvard students that play violin and piano. Her other strikingly unique hobbies include baking and socializing.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Creative Team Director</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/madeleine-chang.jpg" alt="Madeleine Chang" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Madeleine Chang</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Madeleine usually goes by Mady and is a sophomore in Eliot from Southern California planning to study Human Biology, Behavior, and Evolution. She enjoys playing viola, writing Oscar-winning storylines for Pops, running sometimes, and watching movies (scrolling through 30-second movie clips on Instagram reels).</p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/winston-wang.jpg" alt="Winston Wang" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Winston Wang</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Winston Wang is a junior in Currier studying Physics and Mathematics. Outside of playing viola for Pops, he&#x27;s climbing, playing cards, baking, and more generally, finding any reason possible to not sleep.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Social Chair</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/josetta-wang.jpg" alt="Josetta Wang" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Josetta Wang</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Josetta Wang is a sophomore in Mather from hot and humid West Palm Beach, FL! When she is not eating, she’s playing piano for HRDC or Pops, terrorizing the creative team with unhinged plot point ideas, or probably (trying to) catch up on her assigned readings.</p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/jessie-wang.jpg" alt="Jessie Wang" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Jessie Wang</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Jessie Wang is a junior in Eliot studying HDRB with a secondary in Computer Science. She plays the flute in Pops and enjoys YouTube Shorts and fruit carving.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Snack Sensei</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/josetta-wang.jpg" alt="Josetta Wang" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Josetta Wang</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Josetta Wang is a sophomore in Mather from hot and humid West Palm Beach, FL! When she is not eating, she’s playing piano for HRDC or Pops, terrorizing the creative team with unhinged plot point ideas, or probably (trying to) catch up on her assigned readings.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Ticket Manager</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/emma-xi.jpg" alt="Emma Xi" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Emma Xi</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Emma is a sophomore in Eliot from Arizona studying Government and Data Analytics in Sociology. When she&#x27;s not playing violin in Pops, you can probably find her complaining about the cold, eating instant ramen, or thinking about Costco.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Publicity Chairs</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/julia-wu.jpg" alt="Julia Wu" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Julia Wu</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Julia Wu is a sophomore in Eliot planning to study computational biology with a secondary in English. While she’s not smacking the podium (playing percussion), she loves going on runs around Cambridge, reading random fiction, and going on random side quests with her equally crazy friends.</p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/kevin-lim.jpg" alt="Kevin Lim" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Kevin Lim</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Kevin is a junior from Victoria, Canada, and he plans on concentrating in Neuroscience and Economics. When not playing the cello for Pops, he enjoys watching random movies and playing Gubs with his friends.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Librarians</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/grace-luo.jpg" alt="Grace Luo" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Grace Luo</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Grace is a sophomore violinist in Mather that plans on concentrating in math and neuroscience. While she’s not playing for Pops, you can probably find her doing math somewhere in Science Center or at a boba shop in Harvard Square. :)</p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/keyi-chen.jpg" alt="Keyi Chen" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Keyi Chen</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Keyi is a sophomore in Currier from Long Beach, NY although she&#x27;s originally from Shanghai. She&#x27;s illegally married to Electrical Engineering and robotics but occassioanly likes to ride her unicycle around the yard.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Alumni Director</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/elizabeth-plank.jpg" alt="Elizabeth Plank" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Elizabeth Plank</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Elizabeth is a junior in Leverett studying Human Developmental and Regenerative Biology and Global Health and Health Policy. She is one of five thousand Harvard students that play violin and piano. Her other strikingly unique hobbies include baking and socializing.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Stage Manager</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/nick-li.jpg" alt="Nick Li" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Nick Li</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Nick is a sophomore in Quincy studying Earth &amp; Planetary Science, on a pre-unemployment track. Aside from playing the cello in Pops, he spends his time larping and pretending to be “locked in.”</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Webmaster</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/justin-lu.jpg" alt="Justin Lu" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Justin Lu</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Justin is a junior in Currier studying Computer Science and Math. Outside of playing the viola in pops, he enjoys tennis, playing clash, and sleeping.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Attendance Manager</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/adeline-kim.jpg" alt="Adeline Kim" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Adeline Kim</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Adeline is a junior in Dunster concentrating in Psychology and Linguistics. When she is not playing the violin for Pops, you can find her baking cookies!</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Production Manager</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/devon-chang.jpg" alt="Devon Chang" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Devon Chang</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Devon is a junior in Quincy studying Human Developmental and Regenerative Biology. He is a violinist for Pops who also enjoys chess, playing basketball, and trying new restaurants with friends. You can often find him playing table tennis outside the Quincy dining hall.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Program Manager</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/sarah-benz.jpg" alt="Sarah Benz" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Sarah Benz</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Sarah is a sophomore in Quincy interested in studying some kind of biology or neuroscience. She plays the trumpet in Pops, and enjoys reading, playing Spike Ball, and sundae Sunday.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Historian/Purveyor of the Past</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/ben-fortuin.jpg" alt="Benjamin Fortuin" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Benjamin Fortuin</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Ben is a senior in Winthrop studying Physics and Philosophy who plays viola. Now that he&#x27;s on the way out, Ben decided to become Historian to chisel all his complaints into whatever he digs up in the SOCH - including those about his own intonation. Outside of Pops, Ben plays in HRO, HCO, and more, and enjoys snowboarding and video games.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Student Conductor</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/sebastian-lennox.jpg" alt="Sebastian Lennox" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Sebastian Lennox</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Sebastian is a senior who plays viola.</p>
+        </div>
+      </div></div>
+  </section>
+  <section class="py-8 border-b border-neutral-200 last:border-0">
+    <h2 class="font-display uppercase tracking-[0.2em] text-crimson text-lg mb-6">Lead Arranger</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/jang-choe.jpg" alt="Jang Choe" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Jang Choe</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Jang is a senior and Pfoho-turned-Leverett resident from Las Vegas, Nevada. He studies HDRB &amp; Economics and plays violin for the Pops. When he&#x27;s not arranging [insert Disney song here], you can find Jang preaching about the importance of scooter safety or trying to find the time to discover new restaurants in Boston.</p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-5 items-start">
+        <img src="../assets/img/board/sebastian-lennox.jpg" alt="Sebastian Lennox" class="w-36 h-36 object-cover rounded-md shadow-md shrink-0" loading="lazy">
+        <div>
+          <h3 class="font-display uppercase tracking-wide text-xl text-ink">Sebastian Lennox</h3>
+          <p class="mt-2 text-neutral-700 leading-relaxed">Sebastian is a senior who plays viola.</p>
+        </div>
+      </div></div>
+  </section></div>
+</main>
+
+<footer class="bg-ink text-neutral-300 mt-20">
+  <div class="max-w-7xl mx-auto px-4 py-12 grid gap-8 md:grid-cols-3 items-start">
+    <div>
+      <img src="../assets/img/logo/logo-inverted.png" alt="The Harvard Pops Orchestra" class="h-12 mb-4">
+      <p class="text-sm text-neutral-400">The Harvard Pops Orchestra<br>Copyright &copy; 2026</p>
+    </div>
+    <nav class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm uppercase tracking-wider font-display" aria-label="Footer">
+      <a href="index.html" class="hover:text-white">Home</a>
+      <a href="about.html" class="hover:text-white">About</a>
+      <a href="concerts.html" class="hover:text-white">Concerts</a>
+      <a href="donate.html" class="hover:text-white">Donate</a>
+      <a href="contact.html" class="hover:text-white">Contact</a>
+    </nav>
+    <div class="flex md:justify-end gap-4">
+      <a href="https://www.instagram.com/harvardpopsorchestra/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-white">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.3-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.3-.4 1.2-.1 1.6-.1 4.8-.1zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a5 5 0 110 10 5 5 0 010-10zm0 1.8a3.2 3.2 0 100 6.4 3.2 3.2 0 000-6.4zm5.2-2.9a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/harvard.pops.orchestra" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-white">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@harvardpops4523" target="_blank" rel="noopener" aria-label="YouTube" class="hover:text-white">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.2C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.2c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2A31.3 31.3 0 0024 12a31.3 31.3 0 00-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<dialog id="searchModal" class="modal">
+  <div class="modal-box max-w-xl bg-white">
+    <h3 class="font-display uppercase tracking-wider text-lg mb-3">Search</h3>
+    <input id="searchInput" type="text" placeholder="Search the site&hellip;"
+           class="input input-bordered w-full bg-white" oninput="doSearch(this.value)" autocomplete="off">
+    <ul id="searchResults" class="mt-4 space-y-1"></ul>
+    <div class="modal-action">
+      <form method="dialog"><button class="btn btn-sm">Close</button></form>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop"><button>close</button></form>
+</dialog>
+<script>
+const SEARCH_INDEX = [["Home", "index.html", "You've heard of musical theater. We bring you theatrical music. Harvard Pops Orchestra student-run full symphonic orchestra tickets fall 2026 concert"], ["Our Story", "about.html", "Founded in 1996 by Eric Damast. Full symphonic orchestra conducted by Allen Feinstein. Theatrical music productions, themed concerts, Lowell Lecture Hall, SOCH."], ["Board", "board.html", "Board 2026 co-presidents treasurer operations creative team social chair snack sensei ticket manager publicity librarians alumni stage manager webmaster attendance production program historian student conductor lead arranger"], ["Members", "members.html", "Members violin viola cello contrabass flute piccolo oboe clarinet saxophone french horn trumpet trombone piano percussion concertmaster principal"], ["Our Music Director", "conductor.html", "Allen Feinstein music director since 1998. Conductor composer professor Northeastern University Hasty Pudding Theatricals."], ["Concerts", "concerts.html", "Pops meets its Quadfather. Upcoming and past concerts, posters, descriptions, tickets, Lowell Lecture Hall."], ["Auditions", "auditions.html", "Join us. Welcome class of 2030. Audition sign-ups, solo excerpt, sight-reading, low stress, email list."], ["Member Policies", "policies.html", "The rules. Attendance policy rehearsal Tuesday. Ticket sales five tickets. Postering."], ["Donate", "donate.html", "Donate donation form endowment endowed chairs baked goods cookies support."], ["Pandemic Projects", "pandemic-projects.html", "Popscast: Cereal podcast musical mystery melodrama. Pops gets funky."], ["Photos", "photos.html", "Photos galleries. Pops breaks a leg 2018. Mission Impopsible 2017. 20th Anniversary Alumni Concert. Humanitarian of the year."], ["Contact", "contact.html", "Get in touch. Email harvardpops@gmail.com. Facebook Instagram. Question comment form."]];
+function doSearch(q) {
+  const ul = document.getElementById('searchResults');
+  ul.innerHTML = '';
+  q = q.trim().toLowerCase();
+  if (!q) return;
+  SEARCH_INDEX.filter(([t, u, body]) =>
+    (t + ' ' + body).toLowerCase().includes(q)
+  ).forEach(([t, u]) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = u; a.textContent = t;
+    a.className = 'block px-3 py-2 rounded hover:bg-neutral-100 text-crimson font-display uppercase tracking-wide text-sm';
+    li.appendChild(a); ul.appendChild(li);
+  });
+  if (!ul.children.length) ul.innerHTML = '<li class="px-3 py-2 text-sm text-neutral-400">No results.</li>';
+}
+</script>
+
+</body>
+</html>
