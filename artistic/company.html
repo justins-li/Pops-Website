@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Harvard Pops Orchestra — The Company</title>
+<meta name="description" content="The board and members of the Harvard Pops Orchestra.">
+<link rel="icon" href="../assets/img/logo/logo-inverted.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Karla:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="../assets/css/site.css" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Karla', sans-serif; color: #f5efe6;
+    background: radial-gradient(1200px 800px at 85% -10%, #3a1414 0%, transparent 60%),
+                radial-gradient(1000px 700px at -10% 30%, #241010 0%, transparent 55%),
+                linear-gradient(180deg, #120a0a 0%, #1a0d0d 45%, #120a0a 100%);
+    background-attachment: fixed;
+  }
+  .font-serif { font-family: 'EB Garamond', serif; }
+  h1,h2,h3,.font-display { font-family: 'Oswald', sans-serif; }
+  ::selection { background: #d4af37; color: #120a0a; }
+
+  #spotlight {
+    position: fixed; inset: 0; pointer-events: none; z-index: 5;
+    background: radial-gradient(500px 500px at var(--mx, 50%) var(--my, 30%), rgba(255,220,150,0.07), transparent 70%);
+  }
+  .note { position: absolute; color: rgba(212,175,55,0.22); user-select: none; animation: drift linear infinite; }
+  @keyframes drift {
+    0%   { transform: translateY(15vh) rotate(-8deg); opacity: 0; }
+    12%  { opacity: 1; }
+    88%  { opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(10deg); opacity: 0; }
+  }
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.shown { opacity: 1; transform: none; }
+
+  .filmstrip { display: flex; gap: 14px; width: max-content; animation: filmscroll 60s linear infinite; }
+  .filmstrip img { height: 180px; width: auto; border-radius: 6px;
+                   box-shadow: 0 10px 30px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.08); }
+  @keyframes filmscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee { overflow: hidden; }
+  .marquee-track { display: inline-block; white-space: nowrap; animation: marquee 30s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ------- featured poster card (Up Next) ------- */
+  .poster-card { cursor: pointer; position: relative; perspective: 1100px; outline: none;
+    animation: bob 7s ease-in-out infinite; }
+  @keyframes bob { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-7px) rotate(0.4deg); } }
+  .poster-card:hover, .poster-card:focus-visible { animation-play-state: paused; }
+  .poster-inner { position: relative; transform-style: preserve-3d;
+    transition: transform .7s cubic-bezier(.2,.75,.25,1);
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+  .poster-card.flipped .poster-inner { transform: rotateY(180deg); }
+  .poster-card:focus-visible { box-shadow: 0 0 0 3px #d4af37; border-radius: 8px; }
+  .poster-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 8px; overflow: hidden; }
+  .poster-front img { display: block; width: 100%;
+    box-shadow: 0 16px 36px rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.08); border-radius: 8px; }
+  .poster-back { position: absolute; inset: 0; transform: rotateY(180deg);
+    background: linear-gradient(160deg, #2b1313, #1a0d0d);
+    border: 1px solid rgba(212,175,55,.35); padding: 1rem; display: flex; flex-direction: column; }
+
+  /* ------- the shelf (floating, turnable albums) ------- */
+  .shelf-stage {
+    position: relative; height: min(64vh, 600px); min-height: 440px;
+    width: 100vw; margin-left: calc(50% - 50vw);
+    overflow-x: clip; overflow-y: visible;
+    perspective: 1500px; perspective-origin: 50% 36%;
+  }
+  .album {
+    position: absolute; left: 50%; top: 48%;
+    width: var(--album-w, 300px); height: calc(var(--album-w, 300px) * 1.3333);
+    margin-left: calc(var(--album-w, 300px) / -2);
+    margin-top: calc(var(--album-w, 300px) / -1.5);
+    transform-style: preserve-3d;
+    transition: transform .65s cubic-bezier(.25,.8,.3,1), opacity .5s ease;
+    cursor: pointer; outline: none; touch-action: pan-y;
+  }
+  .album.hiddenAlbum { opacity: 0 !important; pointer-events: none; }
+  .album:focus-visible .album-book { outline: 2px solid #d4af37; outline-offset: 5px; }
+  .album-float { position: absolute; inset: 0; transform-style: preserve-3d;
+    animation: levitate 6.5s ease-in-out infinite; }
+  @keyframes levitate { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  .album-book { position: absolute; inset: 0; transform-style: preserve-3d;
+    transition: transform .7s cubic-bezier(.25,.8,.3,1); }
+  .album-face {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 10px; overflow: hidden; border: 1px solid rgba(212,175,55,.28);
+    background: linear-gradient(165deg, #251212, #170c0c);
+    box-shadow: 0 26px 60px rgba(0,0,0,.6);
+  }
+  .album-front { display: flex; align-items: center; justify-content: center; padding: 10px; }
+  .album-front img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
+  .album-back { transform: rotateY(180deg); padding: 1.1rem; display: flex; flex-direction: column; }
+  .album-shadow {
+    position: absolute; left: 50%; top: calc(100% + 30px); width: 78%; height: 28px;
+    transform: translateX(-50%); border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(255,206,120,.18), rgba(255,206,120,.05) 55%, transparent 72%);
+    animation: shadowPulse 6.5s ease-in-out infinite;
+  }
+  @keyframes shadowPulse {
+    0%,100% { transform: translateX(-50%) scaleX(1); opacity: .9; }
+    50%     { transform: translateX(-50%) scaleX(.8); opacity: .55; }
+  }
+  /* photo variant: headshot fills the card, name label at the foot */
+  .album--photo .album-front { padding: 0; }
+  .album--photo .album-front img { width: 100%; height: 100%; max-width: none; max-height: none;
+    object-fit: cover; border-radius: 0; }
+  .album-name {
+    position: absolute; inset-inline: 0; bottom: 0; padding: 2.2rem .9rem .8rem;
+    background: linear-gradient(to top, rgba(10,5,5,.95), transparent); text-align: left;
+  }
+
+  /* ------- flip cards (board grid reuse + instrument rosters) ------- */
+  .member-card { perspective: 1000px; cursor: pointer; outline: none; }
+  .member-card:focus-visible { box-shadow: 0 0 0 3px #d4af37; border-radius: 10px; }
+  .member-inner { position: relative; aspect-ratio: 3/4; transform-style: preserve-3d;
+    transition: transform .65s cubic-bezier(.2,.75,.25,1); }
+  .member-card.flipped .member-inner, .member-card:hover .member-inner { transform: rotateY(180deg); }
+  .member-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
+  .member-front img { width: 100%; height: 100%; object-fit: cover; }
+  .member-label { position: absolute; inset-inline: 0; bottom: 0; padding: .9rem .8rem .7rem;
+    background: linear-gradient(to top, rgba(10,5,5,.92), transparent); }
+  .member-back { transform: rotateY(180deg); background: linear-gradient(160deg, #2b1313, #170b0b);
+    padding: .9rem; display: flex; flex-direction: column; }
+  .inst-front { display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; background: linear-gradient(165deg, #2b1414, #160b0b); padding: 1rem;
+    border: 1px solid rgba(212,175,55,.3); }
+  .inst-card { animation: bob 8s ease-in-out infinite; }
+  .inst-card:nth-child(3n) { animation-delay: -2.7s; }
+  .inst-card:nth-child(3n+1) { animation-delay: -5.4s; }
+  .inst-card:hover, .inst-card:focus-visible { animation-play-state: paused; }
+
+  .strip { display: flex; gap: .8rem; overflow-x: auto; padding-bottom: .6rem;
+    scrollbar-width: thin; scrollbar-color: #8d2424 transparent; }
+  .strip-item { flex: 0 0 auto; }
+  .strip-item img { height: 170px; width: auto; border-radius: 6px;
+    border: 1px solid rgba(255,255,255,.1); transition: transform .4s; }
+  .strip-item:hover img { transform: scale(1.04); }
+
+  #dotNav { position: fixed; right: 14px; top: 50%; transform: translateY(-50%); z-index: 60;
+    display: flex; flex-direction: column; gap: 14px; }
+  .dot-link { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.3); transition: all .3s; }
+  .dot-link.active .dot { background: #d4af37; transform: scale(1.5); }
+  .dot-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.0);
+    transition: color .3s; }
+  .dot-link:hover .dot-label { color: rgba(255,255,255,.75); }
+  @media (max-width: 767px) { #dotNav { display: none; } }
+
+  #menuOverlay { position: fixed; inset: 0; z-index: 85; background: rgba(12,6,6,.96);
+    backdrop-filter: blur(6px); display: none; }
+  #menuOverlay.open { display: flex; }
+  .menu-link { font-family: 'Oswald'; text-transform: uppercase; letter-spacing: .2em;
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem); color: #f5efe6; padding: .4rem 0; transition: color .25s; }
+  .menu-link:hover { color: #d4af37; }
+  .gold-rule { width: 70px; height: 1px; background: linear-gradient(90deg, #d4af37, transparent); }
+  .top-pill { padding: .625rem 1rem; border-radius: 9999px; font-family: 'Oswald';
+    text-transform: uppercase; letter-spacing: .2em; font-size: .72rem;
+    border: 1px solid rgba(255,255,255,.12); box-shadow: 0 10px 25px rgba(0,0,0,.4);
+    transition: background .25s, color .25s, border-color .25s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .filmstrip, .marquee-track, .poster-card, .note, .album-float, .album-shadow, .inst-card { animation: none !important; }
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="spotlight" aria-hidden="true"></div>
+<div id="notes" aria-hidden="true" class="fixed inset-0 overflow-hidden pointer-events-none z-[4]"></div>
+
+<a href="../index.html" title="Back to the two experiences"
+   class="fixed top-2 left-1/2 -translate-x-1/2 z-[90] text-[11px] uppercase tracking-widest px-3 py-1 rounded-full
+          bg-white/5 text-white/50 backdrop-blur-sm border border-white/15
+          opacity-40 hover:opacity-100 transition-opacity duration-300">&#8646; experiences</a>
+
+<button id="menuBtn" onclick="openMenu()" aria-label="Open menu"
+        class="fixed top-4 left-4 z-[88] w-11 h-11 rounded-full border border-white/20 bg-black/30 backdrop-blur
+               flex items-center justify-center text-gold hover:border-gold transition-colors">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+
+<div class="fixed top-4 right-4 z-[88] flex gap-2">
+  <a href="index.html" class="top-pill bg-black/30 text-gold border-gold/50 hover:bg-gold hover:text-ink backdrop-blur">The Show</a>
+  <a href="https://boxoffice.harvard.edu/Online/default.asp?BOparam::WScontent::loadArticle::permalink=harvard-pops-orchestra" target="_blank" rel="noopener"
+     class="top-pill bg-crimson/90 hover:bg-crimson text-white border-white/10">Tickets</a>
+</div>
+
+<div id="menuOverlay" role="dialog" aria-label="Menu">
+  <button onclick="closeMenu()" aria-label="Close menu" class="absolute top-5 left-5 w-11 h-11 rounded-full border border-white/20 text-white/80 hover:text-gold flex items-center justify-center text-2xl">&times;</button>
+  <div class="m-auto flex flex-col items-center text-center gap-1 px-6">
+    <a href="index.html#overture" class="menu-link" onclick="closeMenu()">Overture</a>
+<a href="index.html#act-1" class="menu-link" onclick="closeMenu()">Act I &middot; Who We Are</a>
+<a href="index.html#act-2" class="menu-link" onclick="closeMenu()">Act II &middot; Concerts</a>
+<a href="index.html#act-3" class="menu-link" onclick="closeMenu()">Act III &middot; Get Involved</a>
+<a href="index.html#act-4" class="menu-link" onclick="closeMenu()">Act IV &middot; Media</a>
+<a href="index.html#finale" class="menu-link" onclick="closeMenu()">Finale &middot; Contact</a>
+    <span class="menu-link text-gold">The Company &middot; Board &amp; Members</span>
+    <div class="gold-rule my-5 mx-auto"></div>
+    <a href="https://www.youtube.com/@harvardpops4523" target="_blank" rel="noopener" class="menu-link !text-base">Concert Videos &#8599;</a>
+    <a href="http://popsalumni.sigs.harvard.edu/" target="_blank" rel="noopener" class="menu-link !text-base">Alumni &#8599;</a>
+    <a href="../classic/index.html" class="menu-link !text-base text-white/60">Visit the Concert Hall site &rarr;</a>
+  </div>
+</div>
+
+<header class="relative z-10 max-w-6xl mx-auto px-4 pt-28 pb-6">
+  <p class="font-display uppercase tracking-[0.4em] text-gold/80 text-sm reveal">Who We Are</p>
+  <h1 class="font-display uppercase text-5xl md:text-7xl tracking-wide mt-2 reveal">The Company</h1>
+  <div class="gold-rule mt-5 mb-4"></div>
+  <p class="text-white/60 font-serif italic reveal">The people behind the Pops &mdash; drifting through the stage door.</p>
+</header>
+
+<!-- ============================ BOARD SHELF ============================ -->
+<section id="board" class="relative z-10 max-w-6xl mx-auto px-4 py-10">
+  <h2 class="font-display uppercase tracking-[0.2em] text-xl text-white reveal">Board 2026</h2>
+  <div class="gold-rule mt-3 mb-6"></div>
+  
+  <div class="reveal">
+    <div class="flex items-end justify-between gap-6 min-h-[92px]">
+      <div>
+        <p id="boardEyebrow" class="font-display uppercase tracking-[0.3em] text-white/50 text-xs">&nbsp;</p>
+        <h3 id="boardTitle" class="font-serif text-3xl md:text-5xl text-white mt-2 leading-tight">&nbsp;</h3>
+      </div>
+      <p class="font-display tracking-[0.25em] text-white/50 text-sm whitespace-nowrap pb-1"><span id="boardCounter">01</span>&nbsp;/&nbsp;24</p>
+    </div>
+  </div>
+
+  <div id="boardStage" class="shelf-stage" role="region" aria-roledescription="carousel" aria-label="Board 2026"></div>
+
+  <div class="flex items-center justify-between gap-4 border-t border-white/10 pt-5 reveal">
+    <button id="boardPrev" aria-label="Previous card"
+            class="shrink-0 w-11 h-11 rounded-full border border-white/20 text-white/70 hover:text-gold hover:border-gold transition-colors text-lg">&#10094;</button>
+    <p class="text-center text-white/45 text-[11px] md:text-xs uppercase tracking-[0.18em] leading-relaxed">Click a card to bring it centre stage &middot; Click the centred card to meet them<br class="hidden sm:block"><span class="sm:hidden"> &middot; </span>Drag the centred card to turn it around</p>
+    <button id="boardNext" aria-label="Next card"
+            class="shrink-0 w-11 h-11 rounded-full border border-white/20 text-white/70 hover:text-gold hover:border-gold transition-colors text-lg">&#10095;</button>
+  </div>
+</section>
+
+<!-- ============================ MEMBERS ============================ -->
+<section id="members" class="relative z-10 max-w-6xl mx-auto px-4 py-16">
+  <h2 class="font-display uppercase tracking-[0.2em] text-xl text-white reveal">Members</h2>
+  <p class="text-white/50 text-sm mt-1 reveal">One card per section &mdash; turn a card to read its roster.</p>
+  <div class="gold-rule mt-3 mb-8"></div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+    
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="VIOLIN roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">VIOLIN</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">VIOLIN</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Devon Chang &#x27;28</li>
+<li>Ethan Chang &#x27;29</li>
+<li>Amelia Chen &#x27;30</li>
+<li>Keyi Chen &#x27;29</li>
+<li>Zach Chen &#x27;28</li>
+<li>Alexander Chieng &#x27;29</li>
+<li>Claire Cho &#x27;29</li>
+<li>Jang Choe &#x27;26-27, assistant concertmaster: Hazel Koh &#x27;25 Chair</li>
+<li>Michaela Frey &#x27;30</li>
+<li>Ernestina Hsieh, GSD &#x27;28</li>
+<li>Adeline Kim &#x27;28</li>
+<li>Alex Kim &#x27;29</li>
+<li>John Kim &#x27;28, concertmaster: Perry Tsai MD PhD Chair</li>
+<li>Noah Kim &#x27;28, principal: Eleanor Watkins Duffie Memorial Chair</li>
+<li>Justin Li &#x27;30</li>
+<li>Grace Luo &#x27;29</li>
+<li>Elizabeth Plank &#x27;28</li>
+<li>Krystal Sun &#x27;28</li>
+<li>Angelina Tan &#x27;28</li>
+<li>Miranda Thai &#x27;27</li>
+<li>Patrick Thai &#x27;29</li>
+<li>Emma Xi &#x27;29</li>
+<li>Zoe Wang &#x27;30</li>
+<li>Jenny Wu &#x27;29</li>
+<li>Jeanne Yu &#x27;29</li>
+<li>Sarah Zhang &#x27;29</li>
+<li>Adam Zhou &#x27;26-27</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="VIOLA roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">VIOLA</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">VIOLA</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Madeleine Chang &#x27;29</li>
+<li>Esther Cho &#x27;27, principal</li>
+<li>Benjamin Fortuin &#x27;27</li>
+<li>Becky Gao &#x27;30</li>
+<li>Catherine Jeon &#x27;28</li>
+<li>Ian Kim &#x27;28</li>
+<li>Sebastian Lennox &#x27;27</li>
+<li>Justin Lu &#x27;28</li>
+<li>Justin Song &#x27;30</li>
+<li>Sarah Trainer &#x27;30</li>
+<li>Winston Wang &#x27;28</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="CELLO roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">CELLO</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">CELLO</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Jack Avery &#x27;30</li>
+<li>Grace Barnett &#x27;29</li>
+<li>Rachel Hunter &#x27;28</li>
+<li>Nicholas Li &#x27;29, co-principal: Mary Eleanor Stebbins &#x27;08 Chair</li>
+<li>Kevin Lim &#x27;28</li>
+<li>Jupiter MacAvoy &#x27;29</li>
+<li>Laura Martens &#x27;27</li>
+<li>Brian Tollar &#x27;29</li>
+<li>Jiin Yun &#x27;28, co-principal: Mary Eleanor Stebbins &#x27;08 Chair</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="CONTRABASS roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">CONTRABASS</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">CONTRABASS</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Sonia Le &#x27;29, principal</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="FLUTE/PICCOLO roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">FLUTE/PICCOLO</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">FLUTE/PICCOLO</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Coco Crombie &#x27;28</li>
+<li>Soline Fisher &#x27;29</li>
+<li>Jessie Wang &#x27;28, principal</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="OBOE roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">OBOE</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">OBOE</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Nicole Guo &#x27;27</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="CLARINET roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">CLARINET</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">CLARINET</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Lewen Feng &#x27;30, principal: Neb E. Smaragdwasser Chair</li>
+<li>Jiho Park &#x27;30</li>
+<li>Michael Wang &#x27;28</li>
+<li>Melissa Yang &#x27;30</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="SAXOPHONE roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">SAXOPHONE</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">SAXOPHONE</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Sarah Sun &#x27;29, principal</li>
+<li>Andromeda Wen &#x27;30</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="FRENCH HORN roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">FRENCH HORN</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">FRENCH HORN</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Jang Soo Lee, HSPH &#x27;25, principal: Mark and Chris Yetter Chair</li>
+<li>Markus Wessman &#x27;29</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="TRUMPET roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">TRUMPET</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">TRUMPET</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Sarah Benz &#x27;29</li>
+<li>Benjamin Flaim</li>
+<li>Ben Lyczkowski &#x27;28, principal: Eric Klotch Chair</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="TROMBONE roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">TROMBONE</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">TROMBONE</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Samson Axelrod &#x27;28</li>
+<li>Jack Miller</li>
+<li>Antonio Plaza &#x27;29, principal</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="PIANO roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">PIANO</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">PIANO</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Josetta Wang &#x27;29</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="member-card inst-card" tabindex="0" role="button" aria-label="PERCUSSION roster">
+        <div class="member-inner">
+          <div class="member-face member-front inst-front">
+            <span class="text-gold/70 text-3xl" aria-hidden="true">&#9833;</span>
+            <p class="font-display uppercase tracking-[0.2em] text-white text-lg mt-3 leading-snug px-2">PERCUSSION</p>
+            <p class="mt-auto pb-1 text-[10px] uppercase tracking-[0.25em] text-gold/70">Turn the card</p>
+          </div>
+          <div class="member-face member-back">
+            <p class="font-display uppercase tracking-[0.2em] text-gold text-xs mb-2 shrink-0">PERCUSSION</p>
+            <ul class="space-y-0.5 text-white/80 font-serif text-[13px] leading-snug overflow-y-auto pr-1"><li>Jeremiah Jacinto &#x27;30</li>
+<li>Vincy Quach &#x27;30</li>
+<li>Sarah Sun &#x27;29</li>
+<li>Julia Wu &#x27;29</li>
+<li>Andy Yu &#x27;30</li></ul>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<footer class="relative z-10 border-t border-white/10 mt-10">
+  <div class="max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+    <p class="text-white/50 font-serif">The Harvard Pops Orchestra &middot; Copyright &copy; 2026</p>
+    <div class="flex gap-4">
+      <a href="index.html" class="px-5 py-2.5 border border-gold/60 text-gold hover:bg-gold hover:text-ink transition-colors font-display uppercase tracking-widest text-xs">Back to the show</a>
+      <a href="index.html#finale" class="px-5 py-2.5 bg-crimson hover:bg-crimsondark transition-colors font-display uppercase tracking-widest text-xs text-white">Get in touch</a>
+    </div>
+  </div>
+</footer>
+
+<dialog id="reader" class="bg-transparent p-0 w-[min(94vw,1000px)] outline-none [&::backdrop]:bg-black/85">
+  <div class="grid md:grid-cols-2 bg-[#1a0d0d] border border-gold/30 rounded-xl overflow-hidden shadow-2xl">
+    <div class="bg-black/40 flex items-center justify-center p-4">
+      <img id="readerImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Enlarged view" class="max-h-[80vh] w-auto max-w-full rounded">
+    </div>
+    <div class="p-6 md:p-8 flex flex-col max-h-[80vh] overflow-y-auto">
+      <p id="readerEyebrow" class="font-display uppercase tracking-[0.3em] text-gold text-xs"></p>
+      <h4 id="readerTitle" class="font-serif text-2xl md:text-4xl text-white mt-2 leading-tight"></h4>
+      <p id="readerWhen" class="font-display uppercase tracking-widest text-white/60 text-sm mt-2"></p>
+      <div id="readerBody"></div>
+      <button onclick="document.getElementById('reader').close()"
+              class="mt-8 self-start px-6 py-2.5 border border-gold/60 text-gold hover:bg-gold hover:text-ink transition-colors font-display uppercase tracking-widest text-xs">Close</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+
+function openMenu() { document.getElementById('menuOverlay').classList.add('open'); }
+function closeMenu() { document.getElementById('menuOverlay').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+const finePointer = window.matchMedia('(pointer: fine)').matches;
+const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (finePointer && !noMotion) {
+  const sp = document.getElementById('spotlight');
+  window.addEventListener('pointermove', e => {
+    sp.style.setProperty('--mx', e.clientX + 'px');
+    sp.style.setProperty('--my', e.clientY + 'px');
+  }, { passive: true });
+}
+if (!noMotion && window.self === window.top) {
+  const host = document.getElementById('notes');
+  const glyphs = ['♪', '♫', '♩', '♬'];
+  for (let i = 0; i < 14; i++) {
+    const s = document.createElement('span');
+    s.className = 'note';
+    s.textContent = glyphs[i % glyphs.length];
+    s.style.left = (3 + Math.random() * 94) + '%';
+    s.style.top = '100%';
+    s.style.fontSize = (14 + Math.random() * 26) + 'px';
+    s.style.animationDuration = (16 + Math.random() * 22) + 's';
+    s.style.animationDelay = (-Math.random() * 30) + 's';
+    host.appendChild(s);
+  }
+}
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('shown'); io.unobserve(en.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+document.querySelectorAll('.member-card').forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('flipped'); }
+  });
+});
+
+function escText(s) {
+  return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+}
+// Reusable floating-shelf carousel. opts: stage, eyebrow, title, counter, prev,
+// next, data, photo (bool), backHint, onOpen(item)
+function createShelf(opts) {
+  const stage = document.getElementById(opts.stage);
+  const data = opts.data;
+  let cur = 0, turn = 0, dragSt = null;
+
+  const albums = data.map((it, i) => {
+    const a = document.createElement('div');
+    a.className = 'album hiddenAlbum' + (opts.photo ? ' album--photo' : '');
+    a.tabIndex = 0;
+    a.setAttribute('role', 'button');
+    a.setAttribute('aria-label', it.eyebrow + ' — ' + it.title);
+    const nameLabel = opts.photo ? `
+        <div class="album-name">
+          <p class="font-display uppercase tracking-wider text-white text-sm">${escText(it.title)}</p>
+          <p class="text-[10px] uppercase tracking-widest text-gold mt-0.5">${escText(it.eyebrow)}</p>
+        </div>` : '';
+    a.innerHTML = `
+      <div class="album-shadow" aria-hidden="true"></div>
+      <div class="album-float" style="animation-delay:${((i % 5) * -1.3).toFixed(1)}s">
+        <div class="album-book">
+          <div class="album-face album-front"><img alt="${escText(it.eyebrow)} — ${escText(it.title)}" draggable="false">${nameLabel}</div>
+          <div class="album-face album-back">
+            <p class="font-display uppercase tracking-[0.25em] text-gold text-[11px]">${escText(it.eyebrow)}</p>
+            <p class="font-serif text-xl text-white mt-1 leading-snug">${escText(it.title)}</p>
+            ${it.when ? `<p class="text-[10px] uppercase tracking-widest text-white/50 mt-1">${escText(it.when)}</p>` : ''}
+            <p class="font-serif text-sm text-white/80 leading-relaxed mt-3 overflow-y-auto">${escText(it.blurb)}</p>
+            <p class="mt-auto pt-2 text-[10px] uppercase tracking-[0.25em] text-gold/80">${opts.backHint}</p>
+          </div>
+        </div>
+      </div>`;
+    stage.appendChild(a);
+    return a;
+  });
+
+  const albumW = () => Math.min(300, Math.round(window.innerWidth * 0.62));
+  const spacing = () => Math.min(360, Math.max(165, Math.round(window.innerWidth * 0.26)));
+
+  function layout() {
+    document.documentElement.style.setProperty('--album-w', albumW() + 'px');
+    const gap = spacing();
+    albums.forEach((a, i) => {
+      const off = i - cur, abs = Math.abs(off);
+      if (abs > 4) { a.classList.add('hiddenAlbum'); return; }
+      a.classList.remove('hiddenAlbum');
+      const img = a.querySelector('img');
+      if (!img.getAttribute('src')) img.src = data[i].src;
+      const x = off * gap;
+      const ry = off === 0 ? 0 : (off < 0 ? 42 : -42);
+      const z = off === 0 ? 150 : -40 - abs * 70;
+      const s = off === 0 ? 1 : Math.max(0.78, 0.92 - abs * 0.04);
+      a.style.zIndex = 100 - abs;
+      a.style.opacity = abs === 4 ? 0.2 : 1;
+      a.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${ry}deg) scale(${s})`;
+      if (off !== 0) a.querySelector('.album-book').style.transform = 'rotateY(0deg)';
+    });
+  }
+  function header() {
+    const it = data[cur];
+    document.getElementById(opts.eyebrow).textContent = it.eyebrow;
+    document.getElementById(opts.title).textContent = it.title;
+    document.getElementById(opts.counter).textContent = String(cur + 1).padStart(2, '0');
+  }
+  function select(i) {
+    cur = Math.min(Math.max(i, 0), data.length - 1);
+    turn = 0;
+    layout(); header();
+  }
+
+  albums.forEach((a, i) => {
+    const book = () => a.querySelector('.album-book');
+    a.addEventListener('pointerdown', e => {
+      if (i !== cur) return;
+      dragSt = { x0: e.clientX, turn0: turn, moved: 0 };
+      a.setPointerCapture(e.pointerId);
+      book().style.transition = 'none';
+    });
+    a.addEventListener('pointermove', e => {
+      if (!dragSt || i !== cur) return;
+      const dx = e.clientX - dragSt.x0;
+      dragSt.moved = Math.max(dragSt.moved, Math.abs(dx));
+      turn = dragSt.turn0 + dx * 0.45;
+      book().style.transform = `rotateY(${turn}deg)`;
+    });
+    const endDrag = () => {
+      if (!dragSt || i !== cur) return;
+      const b = book();
+      b.style.transition = '';
+      const wasTap = dragSt.moved < 8;
+      dragSt = null;
+      if (wasTap) { opts.onOpen(data[cur]); return; }
+      turn = Math.round(turn / 180) * 180;
+      b.style.transform = `rotateY(${turn}deg)`;
+    };
+    a.addEventListener('pointerup', endDrag);
+    a.addEventListener('pointercancel', endDrag);
+    a.addEventListener('click', () => { if (i !== cur) select(i); });
+    a.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (i === cur) opts.onOpen(data[cur]); else select(i);
+      }
+    });
+  });
+
+  document.getElementById(opts.prev).addEventListener('click', () => select(cur - 1));
+  document.getElementById(opts.next).addEventListener('click', () => select(cur + 1));
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    if (document.querySelector('dialog[open]')) return;
+    const r = stage.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return;
+    select(cur + (e.key === 'ArrowRight' ? 1 : -1));
+  });
+  window.addEventListener('resize', layout);
+  layout(); header();
+}
+const BOARD_SHELF_DATA = [{"src": "../assets/img/board/jang-choe.jpg", "eyebrow": "Co-Presidents", "title": "Jang Choe", "when": "", "blurb": "Jang is a senior and Pfoho-turned-Leverett resident from Las Vegas, Nevada. He studies HDRB & Economics and plays violin for the Pops. When he's not arranging [insert Disney song here], you can find Jang preaching about the importance of scooter safety or trying to find the time to discover new\u2026", "full": ["Jang is a senior and Pfoho-turned-Leverett resident from Las Vegas, Nevada. He studies HDRB & Economics and plays violin for the Pops. When he's not arranging [insert Disney song here], you can find Jang preaching about the importance of scooter safety or trying to find the time to discover new restaurants in Boston."]}, {"src": "../assets/img/board/laura-martens.jpg", "eyebrow": "Co-Presidents", "title": "Laura Martens", "when": "", "blurb": "Laura is a senior in Lowell studying German, History & Literature. In Pops shows, she plays devious side characters with terrible European accents (and sometimes the cello). Right now, Laura is probably watching Game of Thrones with her mother and little sister.", "full": ["Laura is a senior in Lowell studying German, History & Literature. In Pops shows, she plays devious side characters with terrible European accents (and sometimes the cello). Right now, Laura is probably watching Game of Thrones with her mother and little sister."]}, {"src": "../assets/img/board/brian-tollar.jpg", "eyebrow": "Treasurer", "title": "Brian Tollar", "when": "", "blurb": "Brian is a sophomore in Lowell wanting to study electrical engineering. When he\u2019s not playing cello in Pops, you can find him in the Crimson Cellos or in a random pit for a musical. When not playing cello, he loves to roam around Boston and find new views.", "full": ["Brian is a sophomore in Lowell wanting to study electrical engineering. When he\u2019s not playing cello in Pops, you can find him in the Crimson Cellos or in a random pit for a musical. When not playing cello, he loves to roam around Boston and find new views."]}, {"src": "../assets/img/board/elizabeth-plank.jpg", "eyebrow": "Operations Director", "title": "Elizabeth Plank", "when": "", "blurb": "Elizabeth is a junior in Leverett studying Human Developmental and Regenerative Biology and Global Health and Health Policy. She is one of five thousand Harvard students that play violin and piano. Her other strikingly unique hobbies include baking and socializing.", "full": ["Elizabeth is a junior in Leverett studying Human Developmental and Regenerative Biology and Global Health and Health Policy. She is one of five thousand Harvard students that play violin and piano. Her other strikingly unique hobbies include baking and socializing."]}, {"src": "../assets/img/board/madeleine-chang.jpg", "eyebrow": "Creative Team Director", "title": "Madeleine Chang", "when": "", "blurb": "Madeleine usually goes by Mady and is a sophomore in Eliot from Southern California planning to study Human Biology, Behavior, and Evolution. She enjoys playing viola, writing Oscar-winning storylines for Pops, running sometimes, and watching movies (scrolling through 30-second movie clips on\u2026", "full": ["Madeleine usually goes by Mady and is a sophomore in Eliot from Southern California planning to study Human Biology, Behavior, and Evolution. She enjoys playing viola, writing Oscar-winning storylines for Pops, running sometimes, and watching movies (scrolling through 30-second movie clips on Instagram reels)."]}, {"src": "../assets/img/board/winston-wang.jpg", "eyebrow": "Creative Team Director", "title": "Winston Wang", "when": "", "blurb": "Winston Wang is a junior in Currier studying Physics and Mathematics. Outside of playing viola for Pops, he's climbing, playing cards, baking, and more generally, finding any reason possible to not sleep.", "full": ["Winston Wang is a junior in Currier studying Physics and Mathematics. Outside of playing viola for Pops, he's climbing, playing cards, baking, and more generally, finding any reason possible to not sleep."]}, {"src": "../assets/img/board/josetta-wang.jpg", "eyebrow": "Social Chair", "title": "Josetta Wang", "when": "", "blurb": "Josetta Wang is a sophomore in Mather from hot and humid West Palm Beach, FL! When she is not eating, she\u2019s playing piano for HRDC or Pops, terrorizing the creative team with unhinged plot point ideas, or probably (trying to) catch up on her assigned readings.", "full": ["Josetta Wang is a sophomore in Mather from hot and humid West Palm Beach, FL! When she is not eating, she\u2019s playing piano for HRDC or Pops, terrorizing the creative team with unhinged plot point ideas, or probably (trying to) catch up on her assigned readings."]}, {"src": "../assets/img/board/jessie-wang.jpg", "eyebrow": "Social Chair", "title": "Jessie Wang", "when": "", "blurb": "Jessie Wang is a junior in Eliot studying HDRB with a secondary in Computer Science. She plays the flute in Pops and enjoys YouTube Shorts and fruit carving.", "full": ["Jessie Wang is a junior in Eliot studying HDRB with a secondary in Computer Science. She plays the flute in Pops and enjoys YouTube Shorts and fruit carving."]}, {"src": "../assets/img/board/josetta-wang.jpg", "eyebrow": "Snack Sensei", "title": "Josetta Wang", "when": "", "blurb": "Josetta Wang is a sophomore in Mather from hot and humid West Palm Beach, FL! When she is not eating, she\u2019s playing piano for HRDC or Pops, terrorizing the creative team with unhinged plot point ideas, or probably (trying to) catch up on her assigned readings.", "full": ["Josetta Wang is a sophomore in Mather from hot and humid West Palm Beach, FL! When she is not eating, she\u2019s playing piano for HRDC or Pops, terrorizing the creative team with unhinged plot point ideas, or probably (trying to) catch up on her assigned readings."]}, {"src": "../assets/img/board/emma-xi.jpg", "eyebrow": "Ticket Manager", "title": "Emma Xi", "when": "", "blurb": "Emma is a sophomore in Eliot from Arizona studying Government and Data Analytics in Sociology. When she's not playing violin in Pops, you can probably find her complaining about the cold, eating instant ramen, or thinking about Costco.", "full": ["Emma is a sophomore in Eliot from Arizona studying Government and Data Analytics in Sociology. When she's not playing violin in Pops, you can probably find her complaining about the cold, eating instant ramen, or thinking about Costco."]}, {"src": "../assets/img/board/julia-wu.jpg", "eyebrow": "Publicity Chairs", "title": "Julia Wu", "when": "", "blurb": "Julia Wu is a sophomore in Eliot planning to study computational biology with a secondary in English. While she\u2019s not smacking the podium (playing percussion), she loves going on runs around Cambridge, reading random fiction, and going on random side quests with her equally crazy friends.", "full": ["Julia Wu is a sophomore in Eliot planning to study computational biology with a secondary in English. While she\u2019s not smacking the podium (playing percussion), she loves going on runs around Cambridge, reading random fiction, and going on random side quests with her equally crazy friends."]}, {"src": "../assets/img/board/kevin-lim.jpg", "eyebrow": "Publicity Chairs", "title": "Kevin Lim", "when": "", "blurb": "Kevin is a junior from Victoria, Canada, and he plans on concentrating in Neuroscience and Economics. When not playing the cello for Pops, he enjoys watching random movies and playing Gubs with his friends.", "full": ["Kevin is a junior from Victoria, Canada, and he plans on concentrating in Neuroscience and Economics. When not playing the cello for Pops, he enjoys watching random movies and playing Gubs with his friends."]}, {"src": "../assets/img/board/grace-luo.jpg", "eyebrow": "Librarians", "title": "Grace Luo", "when": "", "blurb": "Grace is a sophomore violinist in Mather that plans on concentrating in math and neuroscience. While she\u2019s not playing for Pops, you can probably find her doing math somewhere in Science Center or at a boba shop in Harvard Square. :)", "full": ["Grace is a sophomore violinist in Mather that plans on concentrating in math and neuroscience. While she\u2019s not playing for Pops, you can probably find her doing math somewhere in Science Center or at a boba shop in Harvard Square. :)"]}, {"src": "../assets/img/board/keyi-chen.jpg", "eyebrow": "Librarians", "title": "Keyi Chen", "when": "", "blurb": "Keyi is a sophomore in Currier from Long Beach, NY although she's originally from Shanghai. She's illegally married to Electrical Engineering and robotics but occassioanly likes to ride her unicycle around the yard.", "full": ["Keyi is a sophomore in Currier from Long Beach, NY although she's originally from Shanghai. She's illegally married to Electrical Engineering and robotics but occassioanly likes to ride her unicycle around the yard."]}, {"src": "../assets/img/board/elizabeth-plank.jpg", "eyebrow": "Alumni Director", "title": "Elizabeth Plank", "when": "", "blurb": "Elizabeth is a junior in Leverett studying Human Developmental and Regenerative Biology and Global Health and Health Policy. She is one of five thousand Harvard students that play violin and piano. Her other strikingly unique hobbies include baking and socializing.", "full": ["Elizabeth is a junior in Leverett studying Human Developmental and Regenerative Biology and Global Health and Health Policy. She is one of five thousand Harvard students that play violin and piano. Her other strikingly unique hobbies include baking and socializing."]}, {"src": "../assets/img/board/nick-li.jpg", "eyebrow": "Stage Manager", "title": "Nick Li", "when": "", "blurb": "Nick is a sophomore in Quincy studying Earth & Planetary Science, on a pre-unemployment track. Aside from playing the cello in Pops, he spends his time larping and pretending to be \u201clocked in.\u201d", "full": ["Nick is a sophomore in Quincy studying Earth & Planetary Science, on a pre-unemployment track. Aside from playing the cello in Pops, he spends his time larping and pretending to be \u201clocked in.\u201d"]}, {"src": "../assets/img/board/justin-lu.jpg", "eyebrow": "Webmaster", "title": "Justin Lu", "when": "", "blurb": "Justin is a junior in Currier studying Computer Science and Math. Outside of playing the viola in pops, he enjoys tennis, playing clash, and sleeping.", "full": ["Justin is a junior in Currier studying Computer Science and Math. Outside of playing the viola in pops, he enjoys tennis, playing clash, and sleeping."]}, {"src": "../assets/img/board/adeline-kim.jpg", "eyebrow": "Attendance Manager", "title": "Adeline Kim", "when": "", "blurb": "Adeline is a junior in Dunster concentrating in Psychology and Linguistics. When she is not playing the violin for Pops, you can find her baking cookies!", "full": ["Adeline is a junior in Dunster concentrating in Psychology and Linguistics. When she is not playing the violin for Pops, you can find her baking cookies!"]}, {"src": "../assets/img/board/devon-chang.jpg", "eyebrow": "Production Manager", "title": "Devon Chang", "when": "", "blurb": "Devon is a junior in Quincy studying Human Developmental and Regenerative Biology. He is a violinist for Pops who also enjoys chess, playing basketball, and trying new restaurants with friends. You can often find him playing table tennis outside the Quincy dining hall.", "full": ["Devon is a junior in Quincy studying Human Developmental and Regenerative Biology. He is a violinist for Pops who also enjoys chess, playing basketball, and trying new restaurants with friends. You can often find him playing table tennis outside the Quincy dining hall."]}, {"src": "../assets/img/board/sarah-benz.jpg", "eyebrow": "Program Manager", "title": "Sarah Benz", "when": "", "blurb": "Sarah is a sophomore in Quincy interested in studying some kind of biology or neuroscience. She plays the trumpet in Pops, and enjoys reading, playing Spike Ball, and sundae Sunday.", "full": ["Sarah is a sophomore in Quincy interested in studying some kind of biology or neuroscience. She plays the trumpet in Pops, and enjoys reading, playing Spike Ball, and sundae Sunday."]}, {"src": "../assets/img/board/ben-fortuin.jpg", "eyebrow": "Historian/Purveyor of the Past", "title": "Benjamin Fortuin", "when": "", "blurb": "Ben is a senior in Winthrop studying Physics and Philosophy who plays viola. Now that he's on the way out, Ben decided to become Historian to chisel all his complaints into whatever he digs up in the SOCH - including those about his own intonation. Outside of Pops, Ben plays in HRO, HCO, and\u2026", "full": ["Ben is a senior in Winthrop studying Physics and Philosophy who plays viola. Now that he's on the way out, Ben decided to become Historian to chisel all his complaints into whatever he digs up in the SOCH - including those about his own intonation. Outside of Pops, Ben plays in HRO, HCO, and more, and enjoys snowboarding and video games."]}, {"src": "../assets/img/board/sebastian-lennox.jpg", "eyebrow": "Student Conductor", "title": "Sebastian Lennox", "when": "", "blurb": "Sebastian is a senior who plays viola.", "full": ["Sebastian is a senior who plays viola."]}, {"src": "../assets/img/board/jang-choe.jpg", "eyebrow": "Lead Arranger", "title": "Jang Choe", "when": "", "blurb": "Jang is a senior and Pfoho-turned-Leverett resident from Las Vegas, Nevada. He studies HDRB & Economics and plays violin for the Pops. When he's not arranging [insert Disney song here], you can find Jang preaching about the importance of scooter safety or trying to find the time to discover new\u2026", "full": ["Jang is a senior and Pfoho-turned-Leverett resident from Las Vegas, Nevada. He studies HDRB & Economics and plays violin for the Pops. When he's not arranging [insert Disney song here], you can find Jang preaching about the importance of scooter safety or trying to find the time to discover new restaurants in Boston."]}, {"src": "../assets/img/board/sebastian-lennox.jpg", "eyebrow": "Lead Arranger", "title": "Sebastian Lennox", "when": "", "blurb": "Sebastian is a senior who plays viola.", "full": ["Sebastian is a senior who plays viola."]}];
+
+function openPerson(it) {
+  document.getElementById('readerImg').src = it.src;
+  document.getElementById('readerEyebrow').textContent = it.eyebrow;
+  document.getElementById('readerTitle').textContent = it.title;
+  document.getElementById('readerWhen').style.display = 'none';
+  document.getElementById('readerBody').innerHTML =
+    it.full.map(p => '<p class="mt-3 font-serif leading-relaxed text-white/85">' + escText(p) + '</p>').join('');
+  document.getElementById('reader').showModal();
+}
+document.getElementById('reader').addEventListener('click', function (e) {
+  if (e.target === this) this.close();
+});
+createShelf({
+  stage: 'boardStage', eyebrow: 'boardEyebrow', title: 'boardTitle', counter: 'boardCounter',
+  prev: 'boardPrev', next: 'boardNext', data: BOARD_SHELF_DATA, photo: true,
+  backHint: 'Click to read the full bio', onOpen: openPerson,
+});
+
+</script>
+</body>
+</html>
