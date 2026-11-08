@@ -257,11 +257,10 @@
     <div class="md:col-span-2 reveal">
       <div class="poster-card !m-0" tabindex="0" role="button" aria-label="Poster for Pops meets its Quadfather" data-full="../assets/img/posters/current-quadfather.jpg">
         <div class="poster-inner">
-          <div class="poster-face poster-front"><img src="../assets/img/posters/current-quadfather.jpg" alt="Poster: Pops meets its Quadfather"></div>
+          <div class="poster-face poster-front"><img src="../assets/img/posters/current-quadfather.jpg" width="1100" height="564" alt="Poster: Pops meets its Quadfather" class="h-auto"></div>
           <div class="poster-face poster-back">
             <p class="font-display uppercase tracking-wider text-gold text-sm">Pops meets its Quadfather</p>
             <p class="mt-1 text-[11px] uppercase tracking-widest text-white/50">Saturday, October 24th at 8-10pm &middot; Lowell Lecture Hall</p>
-            <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span>
           </div>
         </div>
       </div>
@@ -292,9 +291,9 @@
       <p class="font-serif italic text-white/70">The Harvard Pops Orchestra is <a class="underline text-gold hover:text-white transition-colors" href="https://en.wikipedia.org/wiki/Harvard_Pops_Orchestra" target="_blank" rel="noopener">formally recognized by Wikipedia</a> as a student-run organization at Harvard College. It is a full symphonic orchestra producing two major concerts a year, with repertoire ranging from popular music to unpopular music, film scores by John Williams, Broadway hits, classical pieces your friends will actually recognize, and Disney ballads by Jang Choe. Each of our shows has an unhinged plot and singers, with guest professors like David Laibson, Andrew Berry, Jacob Barandes, and Joseph Blitzstein acting in our shows (no female professors have agreed to embarrass themselves yet, but we’re working on it). Check out the <a class="underline text-gold hover:text-white transition-colors" href="#act-2">concerts</a> page if you want to see the person who gave you an A- in a funny costume. It will make you feel better.</p>
     </div>
     <figure class="reveal">
-      <img src="../assets/img/pages/our-story.jpg" alt="The Harvard Pops Orchestra on stage" class="rounded-lg border border-white/10 shadow-2xl">
+      <img src="../assets/img/pages/our-story.jpg" width="1067" height="800" alt="The Harvard Pops Orchestra on stage" class="rounded-lg border border-white/10 shadow-2xl h-auto">
       <figcaption class="sr-only">The Harvard Pops Orchestra on stage</figcaption>
-      <img src="../assets/img/pages/conductor.jpg" alt="Allen Feinstein conducting the Harvard Pops Orchestra" class="rounded-lg border border-white/10 shadow-2xl mt-6" loading="lazy">
+      <img src="../assets/img/pages/conductor.jpg" width="1100" height="733" alt="Allen Feinstein conducting the Harvard Pops Orchestra" class="rounded-lg border border-white/10 shadow-2xl mt-6 h-auto" loading="lazy">
     </figure>
   </div>
 
@@ -330,7 +329,6 @@
   <div class="flex items-center justify-between gap-4 border-t border-white/10 pt-5 reveal">
     <button id="shelfPrev" aria-label="Previous card"
             class="shrink-0 w-11 h-11 rounded-full border border-white/20 text-white/70 hover:text-gold hover:border-gold transition-colors text-lg">&#10094;</button>
-    <p class="text-center text-white/45 text-[11px] md:text-xs uppercase tracking-[0.18em] leading-relaxed">Click a poster to bring it centre stage &middot; Click the centred poster to open it<br class="hidden sm:block"><span class="sm:hidden"> &middot; </span>Drag the centred poster to turn it around</p>
     <button id="shelfNext" aria-label="Next card"
             class="shrink-0 w-11 h-11 rounded-full border border-white/20 text-white/70 hover:text-gold hover:border-gold transition-colors text-lg">&#10095;</button>
   </div>
@@ -954,7 +952,7 @@ then audition for harvard pops!</p>
       <h4 class="font-display uppercase tracking-wide text-lg text-gold">fall 2020 &ndash; popscast: cereal</h4>
       <p class="mt-3 font-serif text-white/85 leading-relaxed">Synopsis: A violin prodigy and her trumpet player roommate must find her missing breakfast cereal before her debut performance with The Harvard Pops Orchestra.</p>
       <p class="mt-3 font-serif text-white/85 leading-relaxed"><a class="underline text-gold hover:text-white transition-colors" href="https://anchor.fm/harvard-pops" target="_blank" rel="noopener">Click here</a> to tune in to this five episode musical mystery melodrama the likes of which you have never heard before.</p>
-      <img src="../assets/img/pages/popscast-poster.jpg" alt="Popscast: Cereal poster" class="mt-5 rounded-lg border border-white/10 w-full max-w-xs" loading="lazy">
+      <img src="../assets/img/pages/popscast-poster.jpg" width="357" height="462" alt="Popscast: Cereal poster" class="mt-5 rounded-lg border border-white/10 w-full max-w-xs h-auto" loading="lazy">
     </div>
     <div class="reveal">
       <h4 class="font-display uppercase tracking-wide text-lg text-gold">summer 2020 &ndash; POPS gets funky</h4>
@@ -1061,7 +1059,7 @@ function escText(s) {
   return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
 }
 // Reusable floating-shelf carousel. opts: stage, eyebrow, title, counter, prev,
-// next, data, photo (bool), backHint, onOpen(item)
+// next, data, photo (bool), onOpen(item)
 function createShelf(opts) {
   const stage = document.getElementById(opts.stage);
   const data = opts.data;
@@ -1088,7 +1086,6 @@ function createShelf(opts) {
             <p class="font-serif text-xl text-white mt-1 leading-snug">${escText(it.title)}</p>
             ${it.when ? `<p class="text-[10px] uppercase tracking-widest text-white/50 mt-1">${escText(it.when)}</p>` : ''}
             <p class="font-serif text-sm text-white/80 leading-relaxed mt-3 overflow-y-auto">${escText(it.blurb)}</p>
-            <p class="mt-auto pt-2 text-[10px] uppercase tracking-[0.25em] text-gold/80">${opts.backHint}</p>
           </div>
         </div>
       </div>`;
@@ -1198,7 +1195,7 @@ document.getElementById('reader').addEventListener('click', function (e) {
 createShelf({
   stage: 'shelfStage', eyebrow: 'shelfEyebrow', title: 'shelfTitle', counter: 'shelfCounter',
   prev: 'shelfPrev', next: 'shelfNext', data: POSTER_SHELF_DATA, photo: false,
-  backHint: 'Click to open the programme', onOpen: openProgramme,
+  onOpen: openProgramme,
 });
 
 function openLightbox(src) {
