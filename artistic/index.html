@@ -85,6 +85,49 @@
     padding: 1rem; display: flex; flex-direction: column;
   }
 
+  /* ---------------- the concert shelf (floating, turnable albums) ---------------- */
+  #shelfStage {
+    position: relative; height: min(64vh, 600px); min-height: 440px;
+    width: 100vw; margin-left: calc(50% - 50vw);
+    overflow-x: clip; overflow-y: visible;
+    perspective: 1500px; perspective-origin: 50% 36%;
+  }
+  .album {
+    position: absolute; left: 50%; top: 48%;
+    width: var(--album-w, 300px); height: calc(var(--album-w, 300px) * 1.3333);
+    margin-left: calc(var(--album-w, 300px) / -2);
+    margin-top: calc(var(--album-w, 300px) / -1.5);
+    transform-style: preserve-3d;
+    transition: transform .65s cubic-bezier(.25,.8,.3,1), opacity .5s ease;
+    cursor: pointer; outline: none; touch-action: pan-y;
+  }
+  .album.hiddenAlbum { opacity: 0 !important; pointer-events: none; }
+  .album:focus-visible .album-book { outline: 2px solid #d4af37; outline-offset: 5px; }
+  .album-float { position: absolute; inset: 0; transform-style: preserve-3d;
+    animation: levitate 6.5s ease-in-out infinite; }
+  @keyframes levitate { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  .album-book { position: absolute; inset: 0; transform-style: preserve-3d;
+    transition: transform .7s cubic-bezier(.25,.8,.3,1); }
+  .album-face {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 10px; overflow: hidden; border: 1px solid rgba(212,175,55,.28);
+    background: linear-gradient(165deg, #251212, #170c0c);
+    box-shadow: 0 26px 60px rgba(0,0,0,.6);
+  }
+  .album-front { display: flex; align-items: center; justify-content: center; padding: 10px; }
+  .album-front img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
+  .album-back { transform: rotateY(180deg); padding: 1.1rem; display: flex; flex-direction: column; }
+  .album-shadow {
+    position: absolute; left: 50%; top: calc(100% + 30px); width: 78%; height: 28px;
+    transform: translateX(-50%); border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(255,206,120,.18), rgba(255,206,120,.05) 55%, transparent 72%);
+    animation: shadowPulse 6.5s ease-in-out infinite;
+  }
+  @keyframes shadowPulse {
+    0%,100% { transform: translateX(-50%) scaleX(1); opacity: .9; }
+    50%     { transform: translateX(-50%) scaleX(.8); opacity: .55; }
+  }
+
   /* ---------------- board flip cards ---------------- */
   .member-card { perspective: 1000px; cursor: pointer; outline: none; }
   .member-card:focus-visible { box-shadow: 0 0 0 3px #d4af37; border-radius: 10px; }
@@ -810,506 +853,30 @@
   <p class="font-display uppercase tracking-[0.4em] text-gold/80 text-sm reveal">Act II</p>
   <h2 class="font-display uppercase text-4xl md:text-6xl tracking-wide mt-2 reveal">Concerts</h2>
   <div class="gold-rule mt-5 mb-4"></div>
-  <p class="text-white/60 font-serif italic mb-10 reveal">The poster wall &mdash; drift through two decades of shows. Hover to tilt, click to flip, flip again for a closer look.</p>
+  <p class="text-white/60 font-serif italic mb-6 reveal">The poster shelf &mdash; two decades of shows, floating in the dark.</p>
 
-  <div class="poster-wall">
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/01-screenshot-2026-09-30-at-3-54-38-pm.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/01-screenshot-2026-09-30-at-3-54-38-pm.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
+  <div class="reveal">
+    <div class="flex items-end justify-between gap-6 min-h-[92px]">
+      <div>
+        <p id="shelfEyebrow" class="font-display uppercase tracking-[0.3em] text-white/50 text-xs">&nbsp;</p>
+        <h3 id="shelfTitle" class="font-serif text-3xl md:text-5xl text-white mt-2 leading-tight">&nbsp;</h3>
       </div>
+      <p class="font-display tracking-[0.25em] text-white/50 text-sm whitespace-nowrap pb-1"><span id="shelfCounter">01</span>&nbsp;/&nbsp;40</p>
+    </div>
+  </div>
 
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/02-img-0273.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/02-img-0273.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
+  <div id="shelfStage" role="region" aria-roledescription="carousel" aria-label="Past concert posters"></div>
 
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/03-cf1e72b2-261c-4cff-8b86-fcf55a8af3b3.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/03-cf1e72b2-261c-4cff-8b86-fcf55a8af3b3.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/04-img-1107.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/04-img-1107.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Spring &#x27;25: Star-Crossed Pops" data-full="../assets/img/posters/05-star-crossed-pops-1-orig.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/05-star-crossed-pops-1-orig.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Spring &#x27;25: Star-Crossed Pops</p>
-          <p class="mt-1 text-[11px] uppercase tracking-widest text-white/50">Saturday, April 12th at 8pm</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">Join Pops for the 1,636th season of the Cupid’s Comet Dating Show! Journey Across the Stars (Star Wars) as contestants from each of the planets — from Dunsturn to Mathearth — will compete to win the Prince of the Universe’s heart! Come see whether Catnip Evergreen or Peetanya Mallmart will secure the ultimate prize… or…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/06-the-harvard-pops-orchestra-presents-3-orig.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/06-the-harvard-pops-orchestra-presents-3-orig.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Fall &#x27;24: LolliPOPS: Sweet Dreams" data-full="../assets/img/posters/07-lollipops.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/07-lollipops.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Fall &#x27;24: LolliPOPS: Sweet Dreams</p>
-          <p class="mt-1 text-[11px] uppercase tracking-widest text-white/50">Saturday, November 16th at 8pm</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">What would you do for a taste of your dreams? Seniors Caroline and Matt are resigned to working Nine to Five, until one day they land an internship that seems like it came right out of their Pure Imagination. Matt thinks he finally found his purpose by making profits go Up (Pixar), but Caroline suspects the mysterious…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Spring &#x27;24: PopsGPT: It&#x27;s Alive!" data-full="../assets/img/posters/08-spring-2024-orig.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/08-spring-2024-orig.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Spring &#x27;24: PopsGPT: It&#x27;s Alive!</p>
-          <p class="mt-1 text-[11px] uppercase tracking-widest text-white/50">Saturday, April 13th at 8pm</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">Sophie is nearly finished with her philosophy senior thesis––that is, until a “Black Swan” (Lake) event forces her to start over days before the deadline! Sick of Holding Out for a Hero, Sophie takes matters into her own hands and steals her roommate’s experimental Generative AI program, known as “The Organically-Learning…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/09-winter-2023.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/09-winter-2023.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Fall &#x27;23: Pops Steps Down: A Royal Succession" data-full="../assets/img/posters/10-pops-the-royal-succession-2.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/10-pops-the-royal-succession-2.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Fall &#x27;23: Pops Steps Down: A Royal Succession</p>
-          <p class="mt-1 text-[11px] uppercase tracking-widest text-white/50">Friday, November 3rd at 8pm</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">The Kingdom of Economica is ruled by its wise king, David Laibson––until his mysterious murder sets off a game of Succession between his two children, and a race to catch the killer! Prince Kenneth, the heir apparent, is more prone to Reflection than ruling and wants to tell the world that “I’m Just Ken”. Princess Charlotte,…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/11-img-3191.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/11-img-3191.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/12-jollypops22-orig.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/12-jollypops22-orig.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Fall &#x27;22: Pops Back to the 80s" data-full="../assets/img/posters/13-pops80soraq-orig.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/13-pops80soraq-orig.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Fall &#x27;22: Pops Back to the 80s</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">When experimentation with the futuristic time machine Lex (Daugherty) goes wrong, two acquaintances must team up to save an 18th-century Marriage (of Figaro) (Mozart) and prevent a friend lost in time from becoming a Phantom (of the Opera) (Webber). Join their Adventures on Earth (Williams) as they meet new friends like My…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Spring &#x27;22: Pops and the Island of Misfit Professors!" data-full="../assets/img/posters/14-pops-spring-2022-v1-1.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/14-pops-spring-2022-v1-1.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Spring &#x27;22: Pops and the Island of Misfit Professors!</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">Three professors are on a mission to make a “wicked awesome discovery” to achieve tenure. They’ll embark on a Raider’s March (Williams) and wonder How Far I’ll Go (Miranda) in a lengthy quest that will nearly take them to Mars (Holst). Join them as they encounter a Carnival of the Animals (Saint-Saens), a Bridge Over…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Fall &#x27;21: Popscast: Live!" data-full="../assets/img/posters/15-popscast-live-concert-poster-sleigh-ride-01.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/15-popscast-live-concert-poster-sleigh-ride-01.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Fall &#x27;21: Popscast: Live!</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">The Harvard Pops will be performing our pandemic podcast Popscast: Cereal live this Thursday December 2nd from 8pm-9pm. Hear us perform the original five episode podcast production in Smith Campus Center Harvard Commons for free! A violin prodigy and her trumpet playing roommate must find her missing breakfast cereal before…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Fall &#x27;21: Pops Casts a Spell!" data-full="../assets/img/posters/16-popsposterfall2021-1.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/16-popsposterfall2021-1.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Fall &#x27;21: Pops Casts a Spell!</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">In this concert, two recently graduated wizards are on a magical mission after a Wicked (Schwartz) magical pandemic performed a Danse Macabre (Saint-Saëns) on their magic education. These Friends On The Other Side (Newman) must navigate A Whole New World (Menken) to find Howl’s Moving Castle (Hisaishi) and master their…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/17-pops-orig.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/17-pops-orig.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/18-spaces-out_2.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/18-spaces-out_2.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/19-out-of-orbit_2.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/19-out-of-orbit_2.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/20-jolly-pops-poster-2017_1.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/20-jolly-pops-poster-2017_1.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Fall &#x27;17: Pops Finds the Wild Things" data-full="../assets/img/posters/21-pops-wildthings-nov2017_1.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/21-pops-wildthings-nov2017_1.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Fall &#x27;17: Pops Finds the Wild Things</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">When a simple hunt for the Sasquatch of Prospect Park (Green &#x27;06) goes awry, wannabe Indiana Jones (Williams) Percy and naturalist Eloise find themselves Spellbound (Rozsa) to a world where Superstition (Wonder arr. Kocharian) comes to life. With the help of Friends on the Other Side (Newman arr. Badillo) can they get Out of…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Spring &#x27;17: Mission ImPOPSible: The Hunt for America&#x27;s Next Top Spy" data-full="../assets/img/posters/22-mission-impopsible.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/22-mission-impopsible.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Spring &#x27;17: Mission ImPOPSible: The Hunt for America&#x27;s Next Top Spy</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">Join aspiring spies Julius, Mia, and Natasha as they vie for the title of America’s Next Top Spy. Will this prove to be a Mission Impossible (Schifrin, Custer)? Or will the contestants be able to demonstrate that they are a group of Incredibles (Giacchino, Holcombe)? Be Prepared (Rice, John, Hylton, Min) for their far-flung…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Spring &#x27;17: Pops&#x27; Greatest Hits: A 20th Anniversary Celebration" data-full="../assets/img/posters/23-pops20-1.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/23-pops20-1.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Spring &#x27;17: Pops&#x27; Greatest Hits: A 20th Anniversary Celebration</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">Our beloved alumni will be singing, acting, conducting, and playing with the orchestra for Pops&#x27; Greatest Hits such as West Side Story (Bernstein) and Star Wars (Williams).</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/24-pops-j-1.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/24-pops-j-1.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Fall &#x27;16: Oh My Gods: A Divine Drama" data-full="../assets/img/posters/25-pops-omg.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/25-pops-omg.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Fall &#x27;16: Oh My Gods: A Divine Drama</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">It’s time to Summon the Heroes (Williams) to Lowell Lecture Hall! The reigning God of Mount Auburn (like the Jupiter [Holst] of Harvard) has reached the end of his term, and it’s up to his children Nike and Titus to take over. Before they have the power to continue the Circle of Life (John), they must first head Up…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Spring &#x27;16: Hunted: A Murderous Musical" data-full="../assets/img/posters/26-hunted6.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/26-hunted6.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Spring &#x27;16: Hunted: A Murderous Musical</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">Say Hello (Adele) to the Harvard Pops Orchestra as they attempt to stay alive on a campus plagued by a string of mysterious deaths! Rocky Horror (O&#x27;Brien) awaits as Vivica and Remy try to survive the attacks from alleged murderer Peter. Will they tell each other, &quot;I&#x27;ll Make a Man Out of You (Wilder)&quot; and make it through the…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/27-jollypopsposter.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/27-jollypopsposter.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Fall &#x27;15: Entombed: A Pops Pyramid Scheme" data-full="../assets/img/posters/28-entombedb.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/28-entombedb.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Fall &#x27;15: Entombed: A Pops Pyramid Scheme</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">The hot days of summer may be gone, but the Harvard Pops Orchestra is ready to take you to the scorching deserts of Egypt! Follow Sam and Layla as they take to the deserts to scour a newly discovered pyramid for treasure. As they Walk Like an Egyptian (Sternberg) into the ruins, they awaken a long-dead Prince of Egypt…</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/29-bluereschedule.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/29-bluereschedule.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/30-concertposter.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/30-concertposter.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Spring &#x27;11: Pops Comes of Age" data-full="../assets/img/posters/31-pops-april-poster-2011-2.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/31-pops-april-poster-2011-2.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Spring &#x27;11: Pops Comes of Age</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">Pops delves into the drama of middle school featuring guest performer Brad Ellis, pianist from Glee! Major repertoire: &quot;The School For Scandal,&quot; &quot;Wicked,&quot; &quot;Pirates of the Caribbean,&quot; &quot;Fiddler on the Roof,&quot; &quot;Make a Man Out of You,&quot; &quot;Danse Bachanale,&quot; &quot;Don&#x27;t Stop Believin&#x27;.&quot;</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Winter &#x27;11: JollyPops - Winter Wizardry" data-full="../assets/img/posters/32-harvard-pops-orchestra-jolly-pops-winter-wizardry.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/32-harvard-pops-orchestra-jolly-pops-winter-wizardry.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Winter &#x27;11: JollyPops - Winter Wizardry</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">Holiday Kids&#x27; Concert. Major repertoire: &quot;Harry Potter,&quot; &quot;The Polar Express,&quot; &quot;Waltz of the Flowers,&quot; &quot;Sleigh Ride,&quot; &quot;Charlie Brown.&quot;</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Fall &#x27;11: Pops Gets Gangster" data-full="../assets/img/posters/33-harvard-pops-orchestra-pops-gets-gangster.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/33-harvard-pops-orchestra-pops-gets-gangster.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Fall &#x27;11: Pops Gets Gangster</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">Revisit the era of the Chicago mobster on the run, risking life and limb for the thrill of the chase. Major repertoire: &quot;On the Waterfront,&quot; &quot;The Pink Panther,&quot; &quot;Slaughter on 10th Avenue,&quot; &quot;Catch Me If You Can,&quot; &quot;Cell Block Tango.&quot;</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/34-31243-393328654236-7304839236-3828383-7318791-n.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/34-31243-393328654236-7304839236-3828383-7318791-n.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/35-april-pops-poster.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/35-april-pops-poster.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/36-jolly-pops-3.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/36-jolly-pops-3.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/37-10320-157110339236-7304839236-2576098-8072665-n.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/37-10320-157110339236-7304839236-2576098-8072665-n.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/38-3150-73753204236-7304839236-1555183-6238437-n.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/38-3150-73753204236-7304839236-1555183-6238437-n.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster — Winter &#x27;09: Cartoons" data-full="../assets/img/posters/39-cartoons-v7-3-copy.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/39-cartoons-v7-3-copy.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm leading-snug">Winter &#x27;09: Cartoons</p>
-          
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif overflow-y-auto max-h-44">What&#x27;s up Doc? Major repertoire: &quot;Themes from Spiderman&quot;</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div>
-
-      <div class="poster-card" tabindex="0" role="button" aria-label="Harvard Pops concert poster" data-full="../assets/img/posters/40-n7304839236-891545-8184.jpg">
-        <div class="poster-inner">
-          <div class="poster-face poster-front">
-            <img src="../assets/img/posters/40-n7304839236-891545-8184.jpg" alt="Harvard Pops concert poster" loading="lazy">
-          </div>
-          <div class="poster-face poster-back">
-          <p class="font-display uppercase tracking-wider text-gold text-sm">The Harvard Pops Orchestra</p>
-          <p class="mt-3 text-sm leading-relaxed text-white/80 font-serif">From the poster archives.</p>
-          <span class="mt-auto pt-3 text-[11px] uppercase tracking-[0.25em] text-gold/80">Tap again for the poster &darr;</span></div>
-        </div>
-      </div></div>
+  <div class="flex items-center justify-between gap-4 border-t border-white/10 pt-5 reveal">
+    <button id="shelfPrev" aria-label="Previous poster"
+            class="shrink-0 w-11 h-11 rounded-full border border-white/20 text-white/70 hover:text-gold hover:border-gold transition-colors text-lg">&#10094;</button>
+    <p class="text-center text-white/45 text-[11px] md:text-xs uppercase tracking-[0.18em] leading-relaxed">
+      Click a poster to bring it centre stage &middot; Click the centred poster to open it<br class="hidden sm:block">
+      <span class="sm:hidden"> &middot; </span>Drag the centred poster to turn it around
+    </p>
+    <button id="shelfNext" aria-label="Next poster"
+            class="shrink-0 w-11 h-11 rounded-full border border-white/20 text-white/70 hover:text-gold hover:border-gold transition-colors text-lg">&#10095;</button>
+  </div>
 
   <div class="mt-24">
     <h3 class="font-display uppercase tracking-[0.2em] text-xl text-white reveal">The Programme &middot; All Past Concerts</h3>
@@ -1975,6 +1542,23 @@ then audition for harvard pops!</p>
   <button onclick="document.getElementById('lightbox').close()" aria-label="Close" class="absolute -top-0 right-0 m-2 w-10 h-10 rounded-full bg-black/60 text-white text-xl">&times;</button>
 </dialog>
 
+<!-- programme reader (opened from the centred shelf poster) -->
+<dialog id="reader" class="bg-transparent p-0 w-[min(94vw,1000px)] outline-none [&::backdrop]:bg-black/85">
+  <div class="grid md:grid-cols-2 bg-[#1a0d0d] border border-gold/30 rounded-xl overflow-hidden shadow-2xl">
+    <div class="bg-black/40 flex items-center justify-center p-4">
+      <img id="readerImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Concert poster" class="max-h-[80vh] w-auto max-w-full rounded">
+    </div>
+    <div class="p-6 md:p-8 flex flex-col max-h-[80vh] overflow-y-auto">
+      <p id="readerEyebrow" class="font-display uppercase tracking-[0.3em] text-gold text-xs"></p>
+      <h4 id="readerTitle" class="font-serif text-2xl md:text-4xl text-white mt-2 leading-tight"></h4>
+      <p id="readerWhen" class="font-display uppercase tracking-widest text-white/60 text-sm mt-2"></p>
+      <div id="readerBody"></div>
+      <button onclick="document.getElementById('reader').close()"
+              class="mt-8 self-start px-6 py-2.5 border border-gold/60 text-gold hover:bg-gold hover:text-ink transition-colors font-display uppercase tracking-widest text-xs">Close</button>
+    </div>
+  </div>
+</dialog>
+
 <script>
 // ---------- menu ----------
 function openMenu() { document.getElementById('menuOverlay').classList.add('open'); }
@@ -2058,6 +1642,145 @@ if (!noMotion && window.self === window.top) {
     host.appendChild(s);
   }
 }
+
+// ---------- the concert shelf ----------
+const SHELF = [{"src": "../assets/img/posters/01-screenshot-2026-09-30-at-3-54-38-pm.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/02-img-0273.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/03-cf1e72b2-261c-4cff-8b86-fcf55a8af3b3.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/04-img-1107.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/05-star-crossed-pops-1-orig.jpg", "eyebrow": "Spring '25", "title": "Star-Crossed Pops", "when": "Saturday, April 12th at 8pm", "blurb": "Join Pops for the 1,636th season of the Cupid\u2019s Comet Dating Show! Journey Across the Stars (Star Wars) as contestants from each of the planets \u2014 from Dunsturn to Mathearth \u2014 will compete to win the Prince of the Universe\u2019s heart! Come see whether Catnip Evergreen or Peetanya Mallmart will\u2026", "full": ["Join Pops for the 1,636th season of the Cupid\u2019s Comet Dating Show! Journey Across the Stars (Star Wars) as contestants from each of the planets \u2014 from Dunsturn to Mathearth \u2014 will compete to win the Prince of the Universe\u2019s heart! Come see whether Catnip Evergreen or Peetanya Mallmart will secure the ultimate prize\u2026 or discover a new one along the way. Be Prepared (The Lion King) for some Wicked plot twists, as our contestants are Almost There (Princess and the Frog) to uncovering an Interstellar conspiracy. Will our contestants end up being overrun by space Pirates [of the Caribbean], or will they [Oogway] Ascend (Kung Fu Panda) to the throne by marrying the Prince? Find out in Star Crossed Pops!"]}, {"src": "../assets/img/posters/06-the-harvard-pops-orchestra-presents-3-orig.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/07-lollipops.jpg", "eyebrow": "Fall '24", "title": "LolliPOPS: Sweet Dreams", "when": "Saturday, November 16th at 8pm", "blurb": "What would you do for a taste of your dreams? Seniors Caroline and Matt are resigned to working Nine to Five, until one day they land an internship that seems like it came right out of their Pure Imagination. Matt thinks he finally found his purpose by making profits go Up (Pixar), but Caroline\u2026", "full": ["What would you do for a taste of your dreams? Seniors Caroline and Matt are resigned to working Nine to Five, until one day they land an internship that seems like it came right out of their Pure Imagination. Matt thinks he finally found his purpose by making profits go Up (Pixar), but Caroline suspects the mysterious factory owner is sweet\u2026 Too Sweet (Hozier). Will the students end up (Overture to) Candied, or will they escape this confectionary La La Land with their dreams intact? Find out in LolliPOPS: Sweet Dreams!"]}, {"src": "../assets/img/posters/08-spring-2024-orig.jpg", "eyebrow": "Spring '24", "title": "PopsGPT: It's Alive!", "when": "Saturday, April 13th at 8pm", "blurb": "Sophie is nearly finished with her philosophy senior thesis\u2013\u2013that is, until a \u201cBlack Swan\u201d (Lake) event forces her to start over days before the deadline! Sick of Holding Out for a Hero, Sophie takes matters into her own hands and steals her roommate\u2019s experimental Generative AI program, known\u2026", "full": ["Sophie is nearly finished with her philosophy senior thesis\u2013\u2013that is, until a \u201cBlack Swan\u201d (Lake) event forces her to start over days before the deadline! Sick of Holding Out for a Hero, Sophie takes matters into her own hands and steals her roommate\u2019s experimental Generative AI program, known as \u201cThe Organically-Learning Knowledge-Engine Neural-Net,\u201d or TOLKENN (of Lord of the Rings fame) for short. However, when Sophie\u2019s philosophical spark brings TOLKENN to life and the first thing it says is \u201cYou\u2019re Welcome!\u201d, she realizes she\u2019s in a bit more trouble than she bargained for. Will this AI revolution lead to riches on the coast of the West (Side Story), or will someone end up a digitized Bride of Frankenstein? Find out in PopsGPT: It\u2019s Alive!"]}, {"src": "../assets/img/posters/09-winter-2023.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/10-pops-the-royal-succession-2.jpg", "eyebrow": "Fall '23", "title": "Pops Steps Down: A Royal Succession", "when": "Friday, November 3rd at 8pm", "blurb": "The Kingdom of Economica is ruled by its wise king, David Laibson\u2013\u2013until his mysterious murder sets off a game of Succession between his two children, and a race to catch the killer! Prince Kenneth, the heir apparent, is more prone to Reflection than ruling and wants to tell the world that \u201cI\u2019m\u2026", "full": ["The Kingdom of Economica is ruled by its wise king, David Laibson\u2013\u2013until his mysterious murder sets off a game of Succession between his two children, and a race to catch the killer! Prince Kenneth, the heir apparent, is more prone to Reflection than ruling and wants to tell the world that \u201cI\u2019m Just Ken\u201d. Princess Charlotte, his underestimated sister, is Spellbound by the chance to become queen and is in Love (is An Open Door) with Hansel, a prince from the neighboring kingdom of Yale-conomica. Will they be tricked by the Devil (Went Down to Georgia), or will they unmask the killer and say \u201cI Knew You Were Trouble\u201d? Find out in Pops Steps Down: A Royal Succession!"]}, {"src": "../assets/img/posters/11-img-3191.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/12-jollypops22-orig.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/13-pops80soraq-orig.jpg", "eyebrow": "Fall '22", "title": "Pops Back to the 80s", "when": "", "blurb": "When experimentation with the futuristic time machine Lex (Daugherty) goes wrong, two acquaintances must team up to save an 18th-century Marriage (of Figaro) (Mozart) and prevent a friend lost in time from becoming a Phantom (of the Opera) (Webber). Join their Adventures on Earth (Williams) as\u2026", "full": ["When experimentation with the futuristic time machine Lex (Daugherty) goes wrong, two acquaintances must team up to save an 18th-century Marriage (of Figaro) (Mozart) and prevent a friend lost in time from becoming a Phantom (of the Opera) (Webber). Join their Adventures on Earth (Williams) as they meet new friends like My Neighbor Totoro (Hisaishi), learn to give up the comforts of the 21st century and not be a Material Girl (Madonna), and find that they can Take On (Me) (A-ha) a lot more than they thought. It\u2019s not all a (Carmen) Fantasy (Sarasate), though: they\u2019ll encounter situations that make them feel as though they\u2019re doing a Dance of the Buffoons (Rimsky-Korsakov), a broken time machine, and much more. If they Don\u2019t Stop Believin\u2019 (Journey), will they be able to find their friend and return to the modern day? Find out in POPS BACK TO THE 80s!"]}, {"src": "../assets/img/posters/14-pops-spring-2022-v1-1.jpg", "eyebrow": "Spring '22", "title": "Pops and the Island of Misfit Professors!", "when": "", "blurb": "Three professors are on a mission to make a \u201cwicked awesome discovery\u201d to achieve tenure. They\u2019ll embark on a Raider\u2019s March (Williams) and wonder How Far I\u2019ll Go (Miranda) in a lengthy quest that will nearly take them to Mars (Holst). Join them as they encounter a Carnival of the Animals\u2026", "full": ["Three professors are on a mission to make a \u201cwicked awesome discovery\u201d to achieve tenure. They\u2019ll embark on a Raider\u2019s March (Williams) and wonder How Far I\u2019ll Go (Miranda) in a lengthy quest that will nearly take them to Mars (Holst). Join them as they encounter a Carnival of the Animals (Saint-Saens), a Bridge Over Troubled Water (Simon & Garfunkel), and a magical Jurassic Park (Williams). Will they be successful, or will they become Les Mis\u00e9rables (Sch\u00f6nberg) and beg Take Me Home, Country Roads (Denver)? Will they continue having to Danzon (M\u00e1rquez) to achieve tenure? Find out in POPS AND THE ISLAND OF MISFIT PROFESSORS!"]}, {"src": "../assets/img/posters/15-popscast-live-concert-poster-sleigh-ride-01.jpg", "eyebrow": "Fall '21", "title": "Popscast: Live!", "when": "", "blurb": "The Harvard Pops will be performing our pandemic podcast Popscast: Cereal live this Thursday December 2nd from 8pm-9pm. Hear us perform the original five episode podcast production in Smith Campus Center Harvard Commons for free! A violin prodigy and her trumpet playing roommate must find her\u2026", "full": ["The Harvard Pops will be performing our pandemic podcast Popscast: Cereal live this Thursday December 2nd from 8pm-9pm. Hear us perform the original five episode podcast production in Smith Campus Center Harvard Commons for free! A violin prodigy and her trumpet playing roommate must find her missing breakfast cereal before her debut performance with The Harvard Pops Orchestra. Tune in live to follow our protagonists on their adventure."]}, {"src": "../assets/img/posters/16-popsposterfall2021-1.jpg", "eyebrow": "Fall '21", "title": "Pops Casts a Spell!", "when": "", "blurb": "In this concert, two recently graduated wizards are on a magical mission after a Wicked (Schwartz) magical pandemic performed a Danse Macabre (Saint-Sa\u00ebns) on their magic education. These Friends On The Other Side (Newman) must navigate A Whole New World (Menken) to find Howl\u2019s Moving Castle\u2026", "full": ["In this concert, two recently graduated wizards are on a magical mission after a Wicked (Schwartz) magical pandemic performed a Danse Macabre (Saint-Sa\u00ebns) on their magic education. These Friends On The Other Side (Newman) must navigate A Whole New World (Menken) to find Howl\u2019s Moving Castle (Hisaishi) and master their magical potential. But, will our heroes find themselves in Double Trouble (Williams) because of a dark wizard's evil schemes? Bring your Superstition (Stevie Wonder), get ready to learn How to Train Your Dragon (Powell), and if you\u2019re lucky you might spot the Fiddler On The Roof (Bock, Williams) in POPS CASTS A SPELL!"]}, {"src": "../assets/img/posters/17-pops-orig.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/18-spaces-out_2.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/19-out-of-orbit_2.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/20-jolly-pops-poster-2017_1.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/21-pops-wildthings-nov2017_1.jpg", "eyebrow": "Fall '17", "title": "Pops Finds the Wild Things", "when": "", "blurb": "When a simple hunt for the Sasquatch of Prospect Park (Green '06) goes awry, wannabe Indiana Jones (Williams) Percy and naturalist Eloise find themselves Spellbound (Rozsa) to a world where Superstition (Wonder arr. Kocharian) comes to life. With the help of Friends on the Other Side (Newman\u2026", "full": ["When a simple hunt for the Sasquatch of Prospect Park (Green '06) goes awry, wannabe Indiana Jones (Williams) Percy and naturalist Eloise find themselves Spellbound (Rozsa) to a world where Superstition (Wonder arr. Kocharian) comes to life. With the help of Friends on the Other Side (Newman arr. Badillo) can they get Out of the Woods (Swift arr. Rosen), or will they get stuck in a Nightmare Before Christmas (Elfman arr. McKenzie)?"]}, {"src": "../assets/img/posters/22-mission-impopsible.jpg", "eyebrow": "Spring '17", "title": "Mission ImPOPSible: The Hunt for America's Next Top Spy", "when": "", "blurb": "Join aspiring spies Julius, Mia, and Natasha as they vie for the title of America\u2019s Next Top Spy. Will this prove to be a Mission Impossible (Schifrin, Custer)? Or will the contestants be able to demonstrate that they are a group of Incredibles (Giacchino, Holcombe)? Be Prepared (Rice, John,\u2026", "full": ["Join aspiring spies Julius, Mia, and Natasha as they vie for the title of America\u2019s Next Top Spy. Will this prove to be a Mission Impossible (Schifrin, Custer)? Or will the contestants be able to demonstrate that they are a group of Incredibles (Giacchino, Holcombe)? Be Prepared (Rice, John, Hylton, Min) for their far-flung Escapades (Williams), whether to Hawaii, or the river Moldau (Smetana). Regardless of who joins Sherlock (Price, Arnold, Marsh) and 007 (Custer) in the Spy Hall of Fame, it is sure to be a wild ride. But what can we say except \"You\u2019re Welcome\" (Miranda, Foa'i, Mancina, Kim)?"]}, {"src": "../assets/img/posters/23-pops20-1.jpg", "eyebrow": "Spring '17", "title": "Pops' Greatest Hits: A 20th Anniversary Celebration", "when": "", "blurb": "Our beloved alumni will be singing, acting, conducting, and playing with the orchestra for Pops' Greatest Hits such as West Side Story (Bernstein) and Star Wars (Williams).", "full": ["Our beloved alumni will be singing, acting, conducting, and playing with the orchestra for Pops' Greatest Hits such as West Side Story (Bernstein) and Star Wars (Williams).", "An ancient map leads Popsies young and old across Harvard's campus to find a legendary treasure with the power to ruin or save Pops. Follow us On the Trail (Daniels) as we attempt to save our Poor Unfortunate Souls (Green)! In an adventure not unlike Pirates of the Caribbean (Ricketts), will Popsies be able to find the treasure before the Were-Viola (Daniels, Lim) arrives?"]}, {"src": "../assets/img/posters/24-pops-j-1.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/25-pops-omg.jpg", "eyebrow": "Fall '16", "title": "Oh My Gods: A Divine Drama", "when": "", "blurb": "It\u2019s time to Summon the Heroes (Williams) to Lowell Lecture Hall! The reigning God of Mount Auburn (like the Jupiter [Holst] of Harvard) has reached the end of his term, and it\u2019s up to his children Nike and Titus to take over. Before they have the power to continue the Circle of Life (John),\u2026", "full": ["It\u2019s time to Summon the Heroes (Williams) to Lowell Lecture Hall! The reigning God of Mount Auburn (like the Jupiter [Holst] of Harvard) has reached the end of his term, and it\u2019s up to his children Nike and Titus to take over. Before they have the power to continue the Circle of Life (John), they must first head Up (Giacchino) to Harvard for one year to learn about the students they are about to rule over. But life at Harvard is not as easy as our young gods thought. Will they really be able to ascend the throne, or are their dreams just a Perfect Illusion (Lady Gaga)? Whatever the outcome, this divine drama is sure to entertain- you can Bet On It (High School Musical 2)!"]}, {"src": "../assets/img/posters/26-hunted6.jpg", "eyebrow": "Spring '16", "title": "Hunted: A Murderous Musical", "when": "", "blurb": "Say Hello (Adele) to the Harvard Pops Orchestra as they attempt to stay alive on a campus plagued by a string of mysterious deaths! Rocky Horror (O'Brien) awaits as Vivica and Remy try to survive the attacks from alleged murderer Peter. Will they tell each other, \"I'll Make a Man Out of You\u2026", "full": ["Say Hello (Adele) to the Harvard Pops Orchestra as they attempt to stay alive on a campus plagued by a string of mysterious deaths! Rocky Horror (O'Brien) awaits as Vivica and Remy try to survive the attacks from alleged murderer Peter. Will they tell each other, \"I'll Make a Man Out of You (Wilder)\" and make it through the turmoil, or will the orchestra need to play a Funeral March for a Marionette (Gounod)? One thing is for sure: this Symphonie Fantastique (Berlioz) is sure to be full of Madness (Marsh & Rosen)!"]}, {"src": "../assets/img/posters/27-jollypopsposter.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/28-entombedb.jpg", "eyebrow": "Fall '15", "title": "Entombed: A Pops Pyramid Scheme", "when": "", "blurb": "The hot days of summer may be gone, but the Harvard Pops Orchestra is ready to take you to the scorching deserts of Egypt! Follow Sam and Layla as they take to the deserts to scour a newly discovered pyramid for treasure. As they Walk Like an Egyptian (Sternberg) into the ruins, they awaken a\u2026", "full": ["The hot days of summer may be gone, but the Harvard Pops Orchestra is ready to take you to the scorching deserts of Egypt! Follow Sam and Layla as they take to the deserts to scour a newly discovered pyramid for treasure. As they Walk Like an Egyptian (Sternberg) into the ruins, they awaken a long-dead Prince of Egypt (Schwartz) who has sworn to protect his final resting place. Will they end up rich and happy like Jasmine and Aladdin (Menken), or will they come out a couple of Les Miserables (Sch\u00f6nberg)? One thing is certain: it\u2019s gonna take a lot of Kung Fu Fighting (Carl Douglas) before they\u2019re ready to Run This Town (Jay-Z). Join the Harvard Pops to see what\u2019s in store!"]}, {"src": "../assets/img/posters/29-bluereschedule.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/30-concertposter.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/31-pops-april-poster-2011-2.jpg", "eyebrow": "Spring '11", "title": "Pops Comes of Age", "when": "", "blurb": "Pops delves into the drama of middle school featuring guest performer Brad Ellis, pianist from Glee! Major repertoire: \"The School For Scandal,\" \"Wicked,\" \"Pirates of the Caribbean,\" \"Fiddler on the Roof,\" \"Make a Man Out of You,\" \"Danse Bachanale,\" \"Don't Stop Believin'.\"", "full": ["Pops delves into the drama of middle school featuring guest performer Brad Ellis, pianist from Glee! Major repertoire: \"The School For Scandal,\" \"Wicked,\" \"Pirates of the Caribbean,\" \"Fiddler on the Roof,\" \"Make a Man Out of You,\" \"Danse Bachanale,\" \"Don't Stop Believin'.\""]}, {"src": "../assets/img/posters/32-harvard-pops-orchestra-jolly-pops-winter-wizardry.jpg", "eyebrow": "Winter '11", "title": "JollyPops - Winter Wizardry", "when": "", "blurb": "Holiday Kids' Concert. Major repertoire: \"Harry Potter,\" \"The Polar Express,\" \"Waltz of the Flowers,\" \"Sleigh Ride,\" \"Charlie Brown.\"", "full": ["Holiday Kids' Concert. Major repertoire: \"Harry Potter,\" \"The Polar Express,\" \"Waltz of the Flowers,\" \"Sleigh Ride,\" \"Charlie Brown.\""]}, {"src": "../assets/img/posters/33-harvard-pops-orchestra-pops-gets-gangster.jpg", "eyebrow": "Fall '11", "title": "Pops Gets Gangster", "when": "", "blurb": "Revisit the era of the Chicago mobster on the run, risking life and limb for the thrill of the chase. Major repertoire: \"On the Waterfront,\" \"The Pink Panther,\" \"Slaughter on 10th Avenue,\" \"Catch Me If You Can,\" \"Cell Block Tango.\"", "full": ["Revisit the era of the Chicago mobster on the run, risking life and limb for the thrill of the chase. Major repertoire: \"On the Waterfront,\" \"The Pink Panther,\" \"Slaughter on 10th Avenue,\" \"Catch Me If You Can,\" \"Cell Block Tango.\""]}, {"src": "../assets/img/posters/34-31243-393328654236-7304839236-3828383-7318791-n.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/35-april-pops-poster.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/36-jolly-pops-3.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/37-10320-157110339236-7304839236-2576098-8072665-n.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/38-3150-73753204236-7304839236-1555183-6238437-n.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}, {"src": "../assets/img/posters/39-cartoons-v7-3-copy.jpg", "eyebrow": "Winter '09", "title": "Cartoons", "when": "", "blurb": "What's up Doc? Major repertoire: \"Themes from Spiderman\"", "full": ["What's up Doc? Major repertoire: \"Themes from Spiderman\""]}, {"src": "../assets/img/posters/40-n7304839236-891545-8184.jpg", "eyebrow": "The Harvard Pops Orchestra", "title": "Poster Archive", "when": "", "blurb": "From the Harvard Pops poster archives.", "full": []}];
+const shelfStage = document.getElementById('shelfStage');
+const shelfTotal = SHELF.length;
+let shelfCur = 0, shelfTurn = 0;
+
+function escText(s) {
+  return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+}
+
+const albums = SHELF.map((it, i) => {
+  const a = document.createElement('div');
+  a.className = 'album hiddenAlbum';
+  a.tabIndex = 0;
+  a.setAttribute('role', 'button');
+  a.setAttribute('aria-label', it.eyebrow + ' — ' + it.title);
+  a.innerHTML = `
+    <div class="album-shadow" aria-hidden="true"></div>
+    <div class="album-float" style="animation-delay:${((i % 5) * -1.3).toFixed(1)}s">
+      <div class="album-book">
+        <div class="album-face album-front"><img alt="Harvard Pops concert poster — ${escText(it.title)}" draggable="false"></div>
+        <div class="album-face album-back">
+          <p class="font-display uppercase tracking-[0.25em] text-gold text-[11px]">${escText(it.eyebrow)}</p>
+          <p class="font-serif text-xl text-white mt-1 leading-snug">${escText(it.title)}</p>
+          ${it.when ? `<p class="text-[10px] uppercase tracking-widest text-white/50 mt-1">${escText(it.when)}</p>` : ''}
+          <p class="font-serif text-sm text-white/80 leading-relaxed mt-3 overflow-y-auto">${escText(it.blurb)}</p>
+          <p class="mt-auto pt-2 text-[10px] uppercase tracking-[0.25em] text-gold/80">Click to open the programme</p>
+        </div>
+      </div>
+    </div>`;
+  shelfStage.appendChild(a);
+  return a;
+});
+
+function albumW() { return Math.min(300, Math.round(window.innerWidth * 0.62)); }
+function albumSpacing() { return Math.min(360, Math.max(165, Math.round(window.innerWidth * 0.26))); }
+
+function shelfLayout() {
+  document.documentElement.style.setProperty('--album-w', albumW() + 'px');
+  const gap = albumSpacing();
+  albums.forEach((a, i) => {
+    const off = i - shelfCur;
+    const abs = Math.abs(off);
+    if (abs > 4) { a.classList.add('hiddenAlbum'); return; }
+    a.classList.remove('hiddenAlbum');
+    const img = a.querySelector('img');
+    if (!img.getAttribute('src')) img.src = SHELF[i].src;
+    const x = off * gap;
+    const ry = off === 0 ? 0 : (off < 0 ? 42 : -42);
+    const z = off === 0 ? 150 : -40 - abs * 70;
+    const s = off === 0 ? 1 : Math.max(0.78, 0.92 - abs * 0.04);
+    a.style.zIndex = 100 - abs;
+    a.style.opacity = abs === 4 ? 0.2 : 1;
+    a.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${ry}deg) scale(${s})`;
+    if (off !== 0) a.querySelector('.album-book').style.transform = 'rotateY(0deg)';
+  });
+}
+
+function updateShelfHeader() {
+  const it = SHELF[shelfCur];
+  document.getElementById('shelfEyebrow').textContent = it.eyebrow;
+  document.getElementById('shelfTitle').textContent = it.title;
+  document.getElementById('shelfCounter').textContent = String(shelfCur + 1).padStart(2, '0');
+}
+
+function selectAlbum(i) {
+  shelfCur = Math.min(Math.max(i, 0), shelfTotal - 1);
+  shelfTurn = 0;
+  shelfLayout();
+  updateShelfHeader();
+}
+
+function openReader(i) {
+  const it = SHELF[i];
+  document.getElementById('readerImg').src = it.src;
+  document.getElementById('readerEyebrow').textContent = it.eyebrow;
+  document.getElementById('readerTitle').textContent = it.title;
+  const rw = document.getElementById('readerWhen');
+  rw.textContent = it.when;
+  rw.style.display = it.when ? '' : 'none';
+  document.getElementById('readerBody').innerHTML = it.full.length
+    ? it.full.map(p => '<p class="mt-3 font-serif leading-relaxed text-white/85">' + escText(p) + '</p>').join('')
+    : '<p class="mt-3 font-serif leading-relaxed text-white/60 italic">From the Harvard Pops poster archives.</p>';
+  document.getElementById('reader').showModal();
+}
+document.getElementById('reader').addEventListener('click', function (e) {
+  if (e.target === this) this.close();
+});
+
+let shelfDrag = null;
+albums.forEach((a, i) => {
+  const book = () => a.querySelector('.album-book');
+  a.addEventListener('pointerdown', e => {
+    if (i !== shelfCur) return;
+    shelfDrag = { x0: e.clientX, turn0: shelfTurn, moved: 0 };
+    a.setPointerCapture(e.pointerId);
+    book().style.transition = 'none';
+  });
+  a.addEventListener('pointermove', e => {
+    if (!shelfDrag || i !== shelfCur) return;
+    const dx = e.clientX - shelfDrag.x0;
+    shelfDrag.moved = Math.max(shelfDrag.moved, Math.abs(dx));
+    shelfTurn = shelfDrag.turn0 + dx * 0.45;
+    book().style.transform = `rotateY(${shelfTurn}deg)`;
+  });
+  const endDrag = () => {
+    if (!shelfDrag || i !== shelfCur) return;
+    const b = book();
+    b.style.transition = '';
+    const wasTap = shelfDrag.moved < 8;
+    shelfDrag = null;
+    if (wasTap) { openReader(shelfCur); return; }
+    shelfTurn = Math.round(shelfTurn / 180) * 180;
+    b.style.transform = `rotateY(${shelfTurn}deg)`;
+  };
+  a.addEventListener('pointerup', endDrag);
+  a.addEventListener('pointercancel', endDrag);
+  a.addEventListener('click', () => { if (i !== shelfCur) selectAlbum(i); });
+  a.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (i === shelfCur) openReader(i); else selectAlbum(i);
+    }
+  });
+});
+
+document.getElementById('shelfPrev').addEventListener('click', () => selectAlbum(shelfCur - 1));
+document.getElementById('shelfNext').addEventListener('click', () => selectAlbum(shelfCur + 1));
+document.addEventListener('keydown', e => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  if (document.getElementById('reader').open) return;
+  const r = shelfStage.getBoundingClientRect();
+  if (r.bottom < 0 || r.top > window.innerHeight) return;
+  selectAlbum(shelfCur + (e.key === 'ArrowRight' ? 1 : -1));
+});
+window.addEventListener('resize', shelfLayout);
+shelfLayout();
+updateShelfHeader();
 
 // ---------- reveal on scroll ----------
 const io = new IntersectionObserver(entries => {
